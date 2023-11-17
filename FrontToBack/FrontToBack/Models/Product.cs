@@ -7,5 +7,7 @@
         public decimal Price { get; set; }    
         public string ImagePrimary { get; set; } 
         public string ImageSecondary { get; set; }
+        public int Order { get; set; }
+
     }
 }
