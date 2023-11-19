@@ -11,5 +11,11 @@ namespace FrontToBack.ViewModels
         public List<Product> NewProducts { get; set; }
 
         public List<Slide> Slides { get; set; }
+        public Product Product { get; set; }
+        public Category Category { get; set; }
+        public List<Product> RelatedProducts { get; set; }
+
+
+
     }
 }

@@ -1,7 +1,14 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\FrontToBack",
+    "\\FrontToBack\\DAL",
+    "\\FrontToBack\\Models",
+    "\\FrontToBack\\ViewModels",
+    "\\FrontToBack\\Views",
+    "\\FrontToBack\\Views\\Home",
+    "\\FrontToBack\\Views\\Product"
   ],
-  "SelectedNode": "\\FrontToBack.sln",
+  "SelectedNode": "\\FrontToBack\\Views\\Product\\Detail.cshtml",
   "PreviewInSolutionExplorer": false
 }

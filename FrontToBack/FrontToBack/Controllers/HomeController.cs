@@ -2,6 +2,7 @@
 using FrontToBack.Models;
 using FrontToBack.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 
 namespace FrontToBack.Controllers
@@ -23,14 +24,14 @@ namespace FrontToBack.Controllers
             List <CustomService> services = _context.CustomServices.ToList();
 
             //======================= Products ucun ========================//
-            List<Product> products = _context.Products.Take(8).ToList();
+            List<Product> products = _context.Products.Take(8).Include(p => p.ProductImages).ToList();
 
             //======================= Latest  ========================//
-            List<Product> latestproducts = _context.Products.OrderByDescending(p=>p.Order).Take(8).ToList();
+            List<Product> latestproducts = _context.Products.OrderByDescending(p=>p.Id).Take(8).Include(p => p.ProductImages).ToList();
 
             //======================= NewProduct ========================//
 
-            List<Product> newproducts = _context.Products.OrderByDescending(p=>p.Id).Take(4).ToList();
+            List<Product> newproducts = _context.Products.OrderByDescending(p=>p.Id).Take(4).Include(p => p.ProductImages).ToList();
 
             HomeVM viewModel = new HomeVM
               {
