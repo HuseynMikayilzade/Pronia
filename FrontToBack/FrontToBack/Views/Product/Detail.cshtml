@@ -1,11 +1,8 @@
-﻿
-@model HomeVM
-
-
+﻿@model HomeVM
 
 <main class="main-content">
     <div class="breadcrumb-area breadcrumb-height"
-         data-bg-image="~/assets/images/breadcrumb/bg/1-1-1919x388.jpg">
+         data-bg-image="/assets/images/breadcrumb/bg/1-1-1919x388.jpg">
         <div class="container h-100">
             <div class="row h-100">
                 <div class="col-lg-12">
@@ -28,6 +25,8 @@
                 <div class="col-lg-6">
                     <div class="single-product-img">
                         <div class="swiper-container single-product-slider">
+                            @*---------------------------------- Product image hissesi -------------------------------------*@
+
                             <div class="swiper-wrapper">
                                 @foreach (var item in Model.Product.ProductImages)
                                 {
@@ -42,30 +41,7 @@
                                    </div>
                                 }
                                
-                               @*  <div class="swiper-slide">
-                                    <a href="~/assets/images/website-images/@Model.Product.ProductImages.FirstOrDefault(pi=>pi.IsPrimary==true).Url"
-                                       class="single-img gallery-popup">
-                                        <img class="img-full"
-                                             src="~/assets/images/website-images/@Model.Product.ProductImages.FirstOrDefault(pi=>pi.IsPrimary==false).Url"
-                                             alt="Product Image" />
-                                    </a>
-                                </div>
-                                <div class="swiper-slide">
-                                    <a href="~/assets/images/website-images/@Model.Product.ProductImages.FirstOrDefault(pi=>pi.IsPrimary==true).Url"
-                                       class="single-img gallery-popup">
-                                        <img class="img-full"
-                                             src="~/assets/images/website-images/@Model.Product.ProductImages.FirstOrDefault(pi=>pi.IsPrimary==false).Url"
-                                             alt="Product Image" />
-                                    </a>
-                                </div>
-                                <div class="swiper-slide">
-                                    <a href="~/assets/images/website-images/@Model.Product.ProductImages.FirstOrDefault(pi=>pi.IsPrimary==true).Url"
-                                       class="single-img gallery-popup">
-                                        <img class="img-full"
-                                             src="~/assets/images/website-images/@Model.Product.ProductImages.FirstOrDefault(pi=>pi.IsPrimary==false).Url"
-                                             alt="Product Image" />
-                                    </a>
-                                </div> *@
+                               
                             </div>
                         </div>
                         <div class="thumbs-arrow-holder">
@@ -124,19 +100,30 @@
                         </div>
                         <div class="selector-wrap color-option">
                             <span class="selector-title border-bottom-0">Color</span>
+                            @*---------------------------------- Colors hissesi -------------------------------------*@
+
                             <select class="nice-select wide border-bottom-0 rounded-0">
-                                <option value="default">Black & White</option>
-                                <option value="blue">Blue</option>
-                                <option value="green">Green</option>
-                                <option value="red">Red</option>
+
+                                @foreach (var item in Model.Product.ProductColors)
+                                {
+                                    <option value="default"> @item.Color.Name </option>
+                                }
+                                
+
+                                
                             </select>
                         </div>
                         <div class="selector-wrap size-option">
                             <span class="selector-title">Size</span>
+                            @*---------------------------------- Size hissesi -------------------------------------*@
+
                             <select class="nice-select wide rounded-0">
-                                <option value="medium">Medium Size & Poot</option>
-                                <option value="large">Large Size With Poot</option>
-                                <option value="small">Small Size With Poot</option>
+                                @foreach (var item in Model.Product.ProductSizes)
+                                {
+                                    <option value="medium">@item.Size.Name</option>
+                                }
+                                
+                             
                             </select>
                         </div>
                         <p class="short-desc">
@@ -201,10 +188,16 @@
                             </ul>
                         </div>
                         <div class="product-category product-tags">
+                        @*---------------------------------- Tags hissesi -------------------------------------*@
+
                             <span class="title">Tags :</span>
                             <ul>
                                 <li>
-                                    <a href="#">Furniture</a>
+                                    @foreach (var item in Model.Product.ProductTags)
+                                    {
+                                        <a href="#">@item.Tag.Name</a>
+                                    }
+                                    
                                 </li>
                             </ul>
                         </div>
@@ -471,11 +464,15 @@
                 <div class="col-lg-12">
                     <div class="swiper-container product-slider">
                         <div class="swiper-wrapper">
+
+
+                        @*---------------------------------- Related Products hissesi -------------------------------------*@
+
                             @foreach (Product product in Model.RelatedProducts)
                             {
                                 <div class="swiper-slide product-item">
                                 <div class="product-img">
-                                    <a href="single-product-variable.html">
+                                    <a asp-controller="product" asp-action="detail" asp-route-id="@product.Id">
                                         <img class="primary-img"
                                              src="~/assets/images/website-images/@product.ProductImages.FirstOrDefault(pi=>pi.IsPrimary==true).Url"
                                              alt="Product Images" />

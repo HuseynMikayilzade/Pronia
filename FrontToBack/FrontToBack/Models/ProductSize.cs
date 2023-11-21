@@ -1,11 +1,12 @@
 ﻿namespace FrontToBack.Models
 {
-    public class ProductImage
+    public class ProductSize
     {
         public int Id { get; set; }
-        public string Url { get; set; }
-        public bool? IsPrimary { get; set; } // ? 3 dene sekil vere bilmeyimiyiz ucun
+        public int SizeId { get; set; }
+        public Size Size { get; set; }
         public int ProductId { get; set; }
         public Product Product { get; set; }
+
     }
 }

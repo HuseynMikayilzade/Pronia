@@ -22,6 +22,9 @@ namespace FrontToBack.Controllers
             Product product= _context.Products
                 .Include(p=>p.Category)
                 .Include(p=>p.ProductImages)
+                .Include(p=>p.ProductColors).ThenInclude(pc=>pc.Color)
+                .Include(p=>p.ProductTags).ThenInclude(pt=>pt.Tag)
+                .Include(p=>p.ProductSizes).ThenInclude(ps=>ps.Size)
                 .FirstOrDefault(p => p.Id == id);
 
             //======================= Related Products  ========================//

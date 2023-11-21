@@ -2,9 +2,6 @@
   "ExpandedNodes": [
     "",
     "\\FrontToBack",
-    "\\FrontToBack\\DAL",
-    "\\FrontToBack\\Models",
-    "\\FrontToBack\\ViewModels",
     "\\FrontToBack\\Views",
     "\\FrontToBack\\Views\\Home",
     "\\FrontToBack\\Views\\Product"

@@ -4,6 +4,7 @@ using FrontToBack.DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FrontToBack.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231120220834_CreateColorsAndProductColorsAndTagsAndProductTagsTables")]
+    partial class CreateColorsAndProductColorsAndTagsAndProductTagsTables
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -168,29 +171,6 @@ namespace FrontToBack.Migrations
                     b.ToTable("ProductImages");
                 });
 
-            modelBuilder.Entity("FrontToBack.Models.ProductSize", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("SizeId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ProductId");
-
-                    b.HasIndex("SizeId");
-
-                    b.ToTable("ProductSizes");
-                });
-
             modelBuilder.Entity("FrontToBack.Models.ProductTag", b =>
                 {
                     b.Property<int>("Id")
@@ -212,23 +192,6 @@ namespace FrontToBack.Migrations
                     b.HasIndex("TagId");
 
                     b.ToTable("ProductTags");
-                });
-
-            modelBuilder.Entity("FrontToBack.Models.Size", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Sizes");
                 });
 
             modelBuilder.Entity("FrontToBack.Models.Slide", b =>
@@ -321,25 +284,6 @@ namespace FrontToBack.Migrations
                     b.Navigation("Product");
                 });
 
-            modelBuilder.Entity("FrontToBack.Models.ProductSize", b =>
-                {
-                    b.HasOne("FrontToBack.Models.Product", "Product")
-                        .WithMany("ProductSizes")
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("FrontToBack.Models.Size", "Size")
-                        .WithMany("ProductSizes")
-                        .HasForeignKey("SizeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Product");
-
-                    b.Navigation("Size");
-                });
-
             modelBuilder.Entity("FrontToBack.Models.ProductTag", b =>
                 {
                     b.HasOne("FrontToBack.Models.Product", "Product")
@@ -375,14 +319,7 @@ namespace FrontToBack.Migrations
 
                     b.Navigation("ProductImages");
 
-                    b.Navigation("ProductSizes");
-
                     b.Navigation("ProductTags");
-                });
-
-            modelBuilder.Entity("FrontToBack.Models.Size", b =>
-                {
-                    b.Navigation("ProductSizes");
                 });
 
             modelBuilder.Entity("FrontToBack.Models.Tag", b =>
