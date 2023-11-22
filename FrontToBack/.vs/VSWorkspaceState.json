@@ -5,12 +5,12 @@
     "\\FrontToBack\\Areas",
     "\\FrontToBack\\Areas\\Manage",
     "\\FrontToBack\\Areas\\Manage\\Views",
-    "\\FrontToBack\\Areas\\Manage\\Views\\Color",
+    "\\FrontToBack\\Areas\\Manage\\Views\\Shared",
     "\\FrontToBack\\Models",
     "\\FrontToBack\\Views",
     "\\FrontToBack\\Views\\Home",
     "\\FrontToBack\\Views\\Product"
   ],
-  "SelectedNode": "\\FrontToBack\\Areas\\Manage\\Views\\Color\\Create.cshtml",
+  "SelectedNode": "\\FrontToBack\\Areas\\Manage\\Views\\Shared\\_Layout.cshtml",
   "PreviewInSolutionExplorer": false
 }

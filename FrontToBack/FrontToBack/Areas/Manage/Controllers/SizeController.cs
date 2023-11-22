@@ -24,6 +24,10 @@ namespace FrontToBack.Areas.Manage.Controllers
             };
             return View(vm);
         }
+
+
+        //========================================== Create =======================================//
+
         public IActionResult Create()
         {
             return View();
@@ -47,8 +51,57 @@ namespace FrontToBack.Areas.Manage.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        //========================================== Update =======================================//
 
-    
+
+        public async Task<IActionResult> Update(int id)
+        {
+            if (id <= 0) BadRequest();
+            Size size =await  _context.Sizes.FirstOrDefaultAsync(s => s.Id == id);
+            if (size == null) NotFound();
+            return View(size);
+        }
+        [HttpPost]
+        public async Task<IActionResult> Update(int id,Size size)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+            Size exist= await _context.Sizes.FirstOrDefaultAsync(s=>s.Id == id);
+            if (exist == null) NotFound();
+
+            bool result = await _context.Sizes.AnyAsync(s=>s.Name == size.Name && s.Id!=id);
+            if (result)
+            {
+                ModelState.AddModelError("Name", "This size is aviable");
+                return View();
+            }
+            exist.Name= size.Name;
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
+
+
+        //========================================== Delete =======================================//
+
+        public async Task<IActionResult> Delete(int id)
+        {
+            if (id <= 0) BadRequest();
+            Tag tag = await _context.Tags.FirstOrDefaultAsync(t => t.Id == id);
+
+            if (tag == null) NotFound();
+
+            _context.Tags.Remove(tag);
+
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction(nameof(Index));
+        }
+
+
+
+
         //private void ToastrSuccess(string message)
         //{
         //    Toastr("success", message);
@@ -58,6 +111,6 @@ namespace FrontToBack.Areas.Manage.Controllers
         //{
         //    TempData["Toastr"] = $"toastr.{type}('{message}');";
         //}
-        
+
     }
 }

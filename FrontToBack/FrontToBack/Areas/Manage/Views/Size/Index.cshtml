@@ -44,9 +44,9 @@
                                         @item.ProductSizes.Count
                                     </td>
                                     <td>
-                                        <a type="button" class="btn btn-outline-success btn-fw" alt="update"><i class="mdi mdi-grease-pencil"></i></a>
-                                        <a type="button" class="btn btn-outline-danger btn-fw" alt="delete"><i class="mdi mdi-delete-sweep"></i></a>
-                                        <a type="button" class="btn btn-outline-primary btn-fw" alt="more"><i class="mdi mdi-more"></i> </a>
+                                        <a asp-controller="size" asp-action="update" asp-route-id="@item.Id" type="button" class="btn btn-outline-success btn-fw" alt="update"><i class="mdi mdi-grease-pencil"></i></a>
+                                        <a asp-controller="size" asp-action="delete" asp-route-id="@item.Id" type="button" class="btn btn-outline-danger btn-fw" alt="delete"><i class="mdi mdi-delete-sweep"></i></a>
+                                        <a asp-controller="size" asp-action="detail" asp-route-id="@item.Id"  type="button" class="btn btn-outline-primary btn-fw" alt="more"><i class="mdi mdi-more"></i> </a>
 
                                     </td>
                                 </tr>

@@ -10,7 +10,6 @@ namespace FrontToBack.Areas.Manage.Controllers
     public class CategoryController : Controller
     {
         private readonly AppDbContext _context;
-
         public CategoryController(AppDbContext context)
         {
             _context = context;
@@ -25,6 +24,11 @@ namespace FrontToBack.Areas.Manage.Controllers
             };
             return View(vm);
         }
+
+
+        //========================================== Create =======================================//
+
+
         public IActionResult Create()
         {
             return View();
@@ -45,6 +49,64 @@ namespace FrontToBack.Areas.Manage.Controllers
             await _context.Categories.AddAsync(category);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
+        }
+
+
+        //========================================== Update =======================================//
+
+
+        public async Task<IActionResult> Update(int id)
+        {
+            if (id <= 0) BadRequest();
+            Category category = await _context.Categories.FirstOrDefaultAsync(c => c.Id == id);
+            if (category == null) NotFound();
+
+            return View(category);
+        }
+        [HttpPost]
+        public async Task<IActionResult> Update(int id, Category category)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+            Category exist = await _context.Categories.FirstOrDefaultAsync(c=>c.Id == id);
+            if (exist == null) NotFound();
+
+            bool result = await _context.Categories.AnyAsync(c => c.Name == category.Name && c.Id != id);
+            if (result)
+            {
+                ModelState.AddModelError("Name", "This category is aviable");
+                return View();
+            }
+            exist.Name= category.Name;
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
+
+
+        //========================================== Delete =======================================//
+
+        public async Task<IActionResult> Delete(int id)
+        {
+            if (id <= 0) BadRequest();
+            Category category = await _context.Categories.FirstOrDefaultAsync(c => c.Id == id);
+
+            if (category == null) NotFound();
+
+            _context.Categories.Remove(category);
+
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction(nameof(Index));
+        }
+        public async Task<IActionResult> Detail(int id)
+        {
+            if(id<0) BadRequest();
+            Category category = await _context.Categories.FirstOrDefaultAsync(c => c.Id == id);
+            if (category == null) NotFound();
+            return View(category);
+
         }
     }
 }
