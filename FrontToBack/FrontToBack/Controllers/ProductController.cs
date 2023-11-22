@@ -29,12 +29,13 @@ namespace FrontToBack.Controllers
 
             //======================= Related Products  ========================//
 
+            if (product == null) return NotFound();
+
             List<Product> relatedproducts = _context.Products
                 .Include(p=>p.Category)
                 .Include(p=>p.ProductImages)
                 .Where(p=>p.CategoryId == product.CategoryId && p.Id!=id).ToList();
 
-            if (product == null) return NotFound();
 
             //======================= Services  ========================//
             List<CustomService> customService=_context.CustomServices.ToList();

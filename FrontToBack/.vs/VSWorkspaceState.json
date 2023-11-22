@@ -2,10 +2,15 @@
   "ExpandedNodes": [
     "",
     "\\FrontToBack",
+    "\\FrontToBack\\Areas",
+    "\\FrontToBack\\Areas\\Manage",
+    "\\FrontToBack\\Areas\\Manage\\Views",
+    "\\FrontToBack\\Areas\\Manage\\Views\\Color",
+    "\\FrontToBack\\Models",
     "\\FrontToBack\\Views",
     "\\FrontToBack\\Views\\Home",
     "\\FrontToBack\\Views\\Product"
   ],
-  "SelectedNode": "\\FrontToBack\\Views\\Product\\Detail.cshtml",
+  "SelectedNode": "\\FrontToBack\\Areas\\Manage\\Views\\Color\\Create.cshtml",
   "PreviewInSolutionExplorer": false
 }

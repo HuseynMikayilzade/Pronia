@@ -1,0 +1,17 @@
+﻿@model Tag
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Create tag for product</h4>
+
+        <form class="forms-sample" method="post">
+            <div class="form-group">
+                <label asp-for=Name>Tag Name</label>
+                <input asp-for=Name class="form-control" placeholder="Tag name">
+                <span asp-validation-for="Name" class="text-danger pt-1"></span>
+            </div>
+
+            <button type="submit" class="btn btn-primary me-2">Submit </button>
+            <a asp-controller="tag" asp-action="index" class="btn btn-light">Cancel</a>
+        </form>
+    </div>
+</div>
