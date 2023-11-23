@@ -103,7 +103,20 @@ namespace FrontToBack.Areas.Manage.Controllers
         public async Task<IActionResult> Detail(int id)
         {
             if(id<0) BadRequest();
-            Category category = await _context.Categories.FirstOrDefaultAsync(c => c.Id == id);
+            Category category = await _context.Categories
+                .Include(c=>c.Products)
+                    .ThenInclude(c=>c.ProductImages)
+                
+                .Include(c=>c.Products)
+                        .ThenInclude(p=>p.ProductTags).ThenInclude(pt=>pt.Tag)
+
+                .Include(c=>c.Products)
+                    .ThenInclude(p=>p.ProductSizes).ThenInclude(ps=>ps.Size)
+
+                .Include(c=>c.Products)
+                    .ThenInclude(p=>p.ProductColors).ThenInclude(pc=>pc.Color)
+                        .FirstOrDefaultAsync(c => c.Id == id);
+                
             if (category == null) NotFound();
             return View(category);
 

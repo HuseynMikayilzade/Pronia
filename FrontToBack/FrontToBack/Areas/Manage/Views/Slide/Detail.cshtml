@@ -1,0 +1,14 @@
+﻿@model Slide
+
+<div class="card">
+
+    <div class="card-body">
+        <h5 class="card-title">Title: @Model.Title</h5>
+        <p class="card-text">Subtitle @Model.subTitle</p>
+        <p class="card-text">Order: @Model.Order</p>
+        <p class="card-text">Id: @Model.Id</p>
+        <p class="card-text"> @Model.Desc</p>
+
+        <a asp-controller="category" asp-action="index" class="btn btn-success">Cancel</a>
+    </div>
+</div>

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Na09Xofj8/RdJlpy1BlDLJrKwaKLv5IxK59TcX66heY=",
+  "Hash": "T7gy1mr49PNghGzAujWd6csVOH+My0bg6HDjmiK9v58=",
   "Source": "FrontToBack",
   "BasePath": "_content/FrontToBack",
   "Mode": "Default",
@@ -5676,6 +5676,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\manage\\vendors\\mdi\\fonts\\materialdesignicons-webfont.woff2"
+    },
+    {
+      "Identity": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\uploads\\slide\\flower-30-570x633.jpg",
+      "SourceId": "FrontToBack",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\",
+      "BasePath": "_content/FrontToBack",
+      "RelativePath": "uploads/slide/flower-30-570x633.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\slide\\flower-30-570x633.jpg"
     }
   ]
 }

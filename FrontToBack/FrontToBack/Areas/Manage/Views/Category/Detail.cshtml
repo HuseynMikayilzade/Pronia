@@ -1,10 +1,40 @@
 ﻿@model Category
 
-<div class="card" style="width: 18rem;">
-    <img src="..." class="card-img-top" alt="...">
+<div class="card" >
+    
     <div class="card-body">
-        <h5 class="card-title">@Model.Name</h5>
-        <p class="card-text">@Model.Id</p>
-        <a asp-controller="category" asp-action="index" class="btn btn-light">Cancel</a>
+        <h5 class="card-title">Category: @Model.Name</h5>
+        <p class="card-text">Category Id: @Model.Id</p>
+        <p class="card-text">Product count: @Model.Products.Count</p>
+
+        <a asp-controller="category" asp-action="index" class="btn btn-success">Cancel</a>
     </div>
+</div>
+
+
+<div class="row d-flex pt-5">
+
+    @foreach (var item in Model.Products)
+    {
+        <div class="card ml-5" style="width: 18rem;">
+            <img src="~/assets/images/website-images/@item.ProductImages.FirstOrDefault(p=>p.IsPrimary==true).Url" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">@item.Name</h5>
+                <p class="card-text"> @item.Description</p>
+                <p class="card-text">Color: @item.ProductColors.FirstOrDefault(ps=>ps.ProductId==item.Id).Color.Name</p>
+
+                <p class="card-text">Sku: @item.SKU</p>
+                <p class="card-text">Size: @item.ProductSizes.FirstOrDefault(ps=>ps.ProductId==item.Id).Size.Name</p>
+
+                <p class="card-text">Price: @item.Price $</p>
+
+                <p class="card-text">Tag: @item.ProductTags.FirstOrDefault(pt=>pt.ProductId==item.Id).Tag.Name</p>
+
+                <a asp-controller="category" asp-action="index" class="btn btn-success">Cancel</a>
+
+            </div>
+        </div>
+
+
+    }
 </div>
