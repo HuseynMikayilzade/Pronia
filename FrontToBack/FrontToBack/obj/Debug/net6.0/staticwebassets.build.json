@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "T7gy1mr49PNghGzAujWd6csVOH+My0bg6HDjmiK9v58=",
+  "Hash": "xOSRMDyd+AjHQ4qPyhsje8YEhSNhA++rjWkDOuQBsfY=",
   "Source": "FrontToBack",
   "BasePath": "_content/FrontToBack",
   "Mode": "Default",
@@ -16,6 +16,23 @@
     }
   ],
   "Assets": [
+    {
+      "Identity": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\25787a52-8019-4a07-ba6f-df2b5c2df46bflower-27-570x633.jpg",
+      "SourceId": "FrontToBack",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\",
+      "BasePath": "_content/FrontToBack",
+      "RelativePath": "25787a52-8019-4a07-ba6f-df2b5c2df46bflower-27-570x633.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\25787a52-8019-4a07-ba6f-df2b5c2df46bflower-27-570x633.jpg"
+    },
     {
       "Identity": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\assets\\css\\animate.min.css",
       "SourceId": "FrontToBack",
@@ -1681,6 +1698,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\images\\sidebar\\banner\\1-270x300.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\assets\\images\\slider\\1e250b8d-718b-4b55-94dc-4a0846847e8eflower-27-570x633.jpg",
+      "SourceId": "FrontToBack",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\",
+      "BasePath": "_content/FrontToBack",
+      "RelativePath": "assets/images/slider/1e250b8d-718b-4b55-94dc-4a0846847e8eflower-27-570x633.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\images\\slider\\1e250b8d-718b-4b55-94dc-4a0846847e8eflower-27-570x633.jpg"
     },
     {
       "Identity": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\assets\\images\\slider\\bg\\1-1.jpg",
@@ -5676,6 +5710,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\manage\\vendors\\mdi\\fonts\\materialdesignicons-webfont.woff2"
+    },
+    {
+      "Identity": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\uploads\\slide\\8547800e-5fd1-4d23-b218-bfba561e83c4flower-26-570x633.jpg",
+      "SourceId": "FrontToBack",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\",
+      "BasePath": "_content/FrontToBack",
+      "RelativePath": "uploads/slide/8547800e-5fd1-4d23-b218-bfba561e83c4flower-26-570x633.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\slide\\8547800e-5fd1-4d23-b218-bfba561e83c4flower-26-570x633.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\uploads\\slide\\flower-18-570x633.jpg",
+      "SourceId": "FrontToBack",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\",
+      "BasePath": "_content/FrontToBack",
+      "RelativePath": "uploads/slide/flower-18-570x633.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\slide\\flower-18-570x633.jpg"
     },
     {
       "Identity": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\uploads\\slide\\flower-30-570x633.jpg",

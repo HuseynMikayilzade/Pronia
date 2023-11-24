@@ -100,5 +100,13 @@ namespace FrontToBack.Areas.Manage.Controllers
 
             return RedirectToAction(nameof(Index));
         }
+
+        public async Task<IActionResult> Detail(int id)
+        {
+            if(id<=0) BadRequest();
+            Color color = _context.Colors.Include(c=>c.ProductColors).FirstOrDefault(c => c.Id == id);
+            if (color == null) NotFound();
+            return View(color);
+        }
     }
 }

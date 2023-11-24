@@ -88,11 +88,11 @@ namespace FrontToBack.Areas.Manage.Controllers
         public async Task<IActionResult> Delete(int id)
         {
             if (id <= 0) BadRequest();
-            Tag tag = await _context.Tags.FirstOrDefaultAsync(t => t.Id == id);
+           Size size = await _context.Sizes.FirstOrDefaultAsync(s => s.Id == id);
 
-            if (tag == null) NotFound();
+            if (size == null) NotFound();
 
-            _context.Tags.Remove(tag);
+            _context.Sizes.Remove(size);
 
             await _context.SaveChangesAsync();
 
@@ -100,7 +100,14 @@ namespace FrontToBack.Areas.Manage.Controllers
         }
 
 
+        public async Task<IActionResult> Detail(int id)
+        {
+            if (id <= 0) return BadRequest();
+           Size size = await _context.Sizes.Include(t => t.ProductSizes).FirstOrDefaultAsync(t => t.Id == id);
+            if (size == null) NotFound();
+            return View(size);
 
+        }
 
         //private void ToastrSuccess(string message)
         //{

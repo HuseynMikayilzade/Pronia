@@ -6,8 +6,9 @@
     "\\FrontToBack\\FrontToBack\\Areas",
     "\\FrontToBack\\FrontToBack\\Areas\\Manage",
     "\\FrontToBack\\FrontToBack\\Areas\\Manage\\Views",
-    "\\FrontToBack\\FrontToBack\\Areas\\Manage\\Views\\Category"
+    "\\FrontToBack\\FrontToBack\\Areas\\Manage\\Views\\Category",
+    "\\FrontToBack\\FrontToBack\\Areas\\Manage\\Views\\Color"
   ],
-  "SelectedNode": "\\FrontToBack\\FrontToBack\\Areas\\Manage\\Views\\Category\\Detail.cshtml",
+  "SelectedNode": "\\FrontToBack\\FrontToBack\\Areas\\Manage\\Views\\Color\\Detail.cshtml",
   "PreviewInSolutionExplorer": false
 }

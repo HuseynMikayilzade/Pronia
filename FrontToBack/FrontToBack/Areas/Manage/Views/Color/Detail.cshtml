@@ -1,0 +1,15 @@
+﻿@model Color
+
+<div class="card">
+
+    <div class="card-body">
+        <h5 class="card-title"> Name: @Model.Name</h5>
+        <p class="card-text">Product Count: @Model.ProductColors.Count</p>
+        <p class="card-text">Id:@Model.Id</p>
+
+
+        <a asp-controller="Color" asp-action="index" class="btn btn-success">Cancel</a>
+    </div>
+</div>
+
+

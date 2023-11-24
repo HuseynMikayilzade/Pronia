@@ -98,5 +98,19 @@ namespace FrontToBack.Areas.Manage.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        public async Task<IActionResult> Detail(int id)
+        {
+            if (id <= 0) return BadRequest();
+            Tag tag = await _context.Tags
+                .Include(t=>t.ProductTags)
+                .FirstOrDefaultAsync(t => t.Id == id);
+
+            if (tag== null) NotFound();
+            return View(tag);
+            
+        }
+
+
+
     }
 }
