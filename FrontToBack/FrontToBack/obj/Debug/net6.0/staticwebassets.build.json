@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "xOSRMDyd+AjHQ4qPyhsje8YEhSNhA++rjWkDOuQBsfY=",
+  "Hash": "XZP6mCM/sDoEeU9qDXGSbx1AXD2zU8RPahHM9VoXMnY=",
   "Source": "FrontToBack",
   "BasePath": "_content/FrontToBack",
   "Mode": "Default",
@@ -5712,12 +5712,12 @@
       "OriginalItemSpec": "wwwroot\\manage\\vendors\\mdi\\fonts\\materialdesignicons-webfont.woff2"
     },
     {
-      "Identity": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\uploads\\slide\\8547800e-5fd1-4d23-b218-bfba561e83c4flower-26-570x633.jpg",
+      "Identity": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\uploads\\slide\\0bc8deab-81cf-47da-8872-b894497cf70fflower-25-570x633.jpg",
       "SourceId": "FrontToBack",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\",
       "BasePath": "_content/FrontToBack",
-      "RelativePath": "uploads/slide/8547800e-5fd1-4d23-b218-bfba561e83c4flower-26-570x633.jpg",
+      "RelativePath": "uploads/slide/0bc8deab-81cf-47da-8872-b894497cf70fflower-25-570x633.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -5726,7 +5726,24 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\uploads\\slide\\8547800e-5fd1-4d23-b218-bfba561e83c4flower-26-570x633.jpg"
+      "OriginalItemSpec": "wwwroot\\uploads\\slide\\0bc8deab-81cf-47da-8872-b894497cf70fflower-25-570x633.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\uploads\\slide\\da39eaf5-dad7-4a96-9a3d-8266b2ea92a0flower-9-570x633.jpg",
+      "SourceId": "FrontToBack",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\",
+      "BasePath": "_content/FrontToBack",
+      "RelativePath": "uploads/slide/da39eaf5-dad7-4a96-9a3d-8266b2ea92a0flower-9-570x633.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\slide\\da39eaf5-dad7-4a96-9a3d-8266b2ea92a0flower-9-570x633.jpg"
     },
     {
       "Identity": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\uploads\\slide\\flower-18-570x633.jpg",

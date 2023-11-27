@@ -223,10 +223,10 @@
                                         <div class="product-img">
                                             <a asp-controller="product" asp-action="detail" asp-route-id="@item.Id">
                                                 <img class="primary-img"
-                                                     src="~/assets/images/website-images//@item.ProductImages.FirstOrDefault(p=>p.IsPrimary==true).Url"
+                                                     src="~/assets/images/website-images//@item.ProductImages.FirstOrDefault(p=>p.IsPrimary==true)?.Url"
                                                      alt="Product Images" />@* sekil qoyaacam *@
                                                 <img class="secondary-img"
-                                                     src="~/assets/images/website-images//@item.ProductImages.FirstOrDefault(p=>p.IsPrimary==false).Url"
+                                                     src="~/assets/images/website-images//@item.ProductImages.FirstOrDefault(p=>p.IsPrimary==false)?.Url"
                                                      alt="Product Images" />@* sekil qoyaacam *@
                                             </a>
                                             <div class="product-add-action">
@@ -303,10 +303,10 @@
                                         <div class="product-img">
                                             <a asp-controller="product" asp-action="detail" asp-route-id="@item.Id">
                                                 <img class="primary-img"
-                                                     src="~/assets/images/website-images//@item.ProductImages.FirstOrDefault(p=>p.IsPrimary==true).Url "
+                                                     src="~/assets/images/website-images//@item.ProductImages.FirstOrDefault(p=>p.IsPrimary==true)?.Url "
                                                      alt="Product Images" />@* sekil qoyaacam *@
                                                 <img class="secondary-img"
-                                                     src="~/assets/images/website-images//@item.ProductImages.FirstOrDefault(p=>p.IsPrimary==false).Url "
+                                                     src="~/assets/images/website-images//@item.ProductImages.FirstOrDefault(p=>p.IsPrimary==false)?.Url "
                                                      alt="Product Images" />@* sekil qoyaacam *@
                                             </a>
                                             <div class="product-add-action">
@@ -474,11 +474,11 @@
                             <div class="product-img">
                                 <a href="shop.html">
                                     <img class="primary-img" 
-                                             src="~/assets/images/website-images//@item.ProductImages.FirstOrDefault(p=>p.IsPrimary==true).Url"
+                                             src="~/assets/images/website-images//@item.ProductImages.FirstOrDefault(p=>p.IsPrimary==true)?.Url"
                                              alt="Product Images" /> @* sekil qoyaacam *@
 
                                     <img class="secondary-img"
-                                             src="~/assets/images/website-images//@item.ProductImages.FirstOrDefault(p=>p.IsPrimary==null).Url "
+                                             src="~/assets/images/website-images//@item.ProductImages.FirstOrDefault(p=>p.IsPrimary==null)?.Url "
                                          alt="Product Images" /> @* sekil qoyaacam *@
                                 </a>
                                 <div class="product-add-action">

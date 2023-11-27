@@ -1,4 +1,5 @@
-﻿using FrontToBack.Areas.Manage.ViewModel;
+﻿
+using FrontToBack.Areas.Manage.ViewModels;
 using FrontToBack.DAL;
 using FrontToBack.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -18,11 +19,8 @@ namespace FrontToBack.Areas.Manage.Controllers
         public async Task<IActionResult> Index()
         {
             List<Size> sizes = await _context.Sizes.Include(s => s.ProductSizes).ToListAsync();
-            DashboardVm vm = new DashboardVm
-            {
-                Sizes= sizes,
-            };
-            return View(vm);
+         
+            return View(sizes);
         }
 
 
@@ -33,18 +31,23 @@ namespace FrontToBack.Areas.Manage.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> Create(Size size)
+        public async Task<IActionResult> Create(CreateSizeVM createSizeVM)
         {
             if (!ModelState.IsValid)
             {
                 return View();
             }
-            bool result = await _context.Sizes.AnyAsync(t=>t.Name == size.Name);
+            bool result = await _context.Sizes.AnyAsync(t=>t.Name == createSizeVM.Name);
             if (result)
             {
                 ModelState.AddModelError("Name", "This size is aviable");
                 return View();
             }
+
+            Size size = new Size
+            {
+                Name = createSizeVM.Name,
+            };
             await _context.AddAsync(size);
             await _context.SaveChangesAsync();
             //ToastrSuccess("Size created successfully!");
@@ -59,10 +62,15 @@ namespace FrontToBack.Areas.Manage.Controllers
             if (id <= 0) BadRequest();
             Size size =await  _context.Sizes.FirstOrDefaultAsync(s => s.Id == id);
             if (size == null) NotFound();
-            return View(size);
+            CreateSizeVM createSizeVM = new CreateSizeVM
+            {
+                Name = size.Name,
+            };
+
+            return View(createSizeVM);
         }
         [HttpPost]
-        public async Task<IActionResult> Update(int id,Size size)
+        public async Task<IActionResult> Update(int id, CreateSizeVM createSizeVM)
         {
             if (!ModelState.IsValid)
             {
@@ -71,13 +79,13 @@ namespace FrontToBack.Areas.Manage.Controllers
             Size exist= await _context.Sizes.FirstOrDefaultAsync(s=>s.Id == id);
             if (exist == null) NotFound();
 
-            bool result = await _context.Sizes.AnyAsync(s=>s.Name == size.Name && s.Id!=id);
+            bool result = await _context.Sizes.AnyAsync(s=>s.Name == createSizeVM.Name && s.Id!=id);
             if (result)
             {
                 ModelState.AddModelError("Name", "This size is aviable");
                 return View();
             }
-            exist.Name= size.Name;
+            exist.Name= createSizeVM.Name;
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }

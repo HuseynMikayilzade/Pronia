@@ -1,4 +1,4 @@
-﻿using FrontToBack.Areas.Manage.ViewModel;
+﻿using FrontToBack.Areas.Manage.ViewModels;
 using FrontToBack.DAL;
 using FrontToBack.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -19,11 +19,8 @@ namespace FrontToBack.Areas.Manage.Controllers
         public async Task<IActionResult> Index()
         {
             List<Tag> tags = await _context.Tags.Include(t=>t.ProductTags).ToListAsync();
-            DashboardVm vm = new DashboardVm
-            {
-                Tags= tags,
-            };
-            return View(vm);
+            
+            return View(tags);
         }
 
         //========================================== Create =======================================//
@@ -33,18 +30,21 @@ namespace FrontToBack.Areas.Manage.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> Create(Tag tag)
+        public async Task<IActionResult> Create(CreateSizeVm createTagVm)
         {
             if(!ModelState.IsValid)
             {
                 return View();
             }
-            bool result = await _context.Tags.AnyAsync(t=>t.Name==tag.Name);
+            bool result = await _context.Tags.AnyAsync(t=>t.Name== createTagVm.Name);
             if(result)
             {
                 ModelState.AddModelError("Name", "This tag is aviable");
                 return View();
             }
+
+            Tag tag = new Tag { Name = createTagVm.Name};
+
             await _context.AddAsync(tag);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
@@ -56,11 +56,15 @@ namespace FrontToBack.Areas.Manage.Controllers
             if (id <= 0) BadRequest();
             Tag tag = await _context.Tags.FirstOrDefaultAsync(t=>t.Id==id);
             if (tag != null) NotFound();
-            return View(tag);
+            UpdateTagVm updateTagVm = new UpdateTagVm
+            {
+                Name = tag.Name,
+            };
+            return View(updateTagVm);
          }
 
          [HttpPost]
-         public async Task<IActionResult> Update(int id,Tag tag)
+         public async Task<IActionResult> Update(int id,UpdateTagVm updateTagVm)
          {
             if (!ModelState.IsValid)
             {
@@ -70,14 +74,14 @@ namespace FrontToBack.Areas.Manage.Controllers
 
             if (exist != null) NotFound();
             
-            bool result = await _context.Tags.AnyAsync(t=>t.Name==tag.Name &&  t.Id!=id);
+            bool result = await _context.Tags.AnyAsync(t=>t.Name== updateTagVm.Name &&  t.Id!=id);
             if (result)
             {
                 ModelState.AddModelError("Name", "This Tag is aviable");
                 return View();
             }
 
-            exist.Name= tag.Name;
+            exist.Name= updateTagVm.Name;
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
          }
@@ -106,6 +110,7 @@ namespace FrontToBack.Areas.Manage.Controllers
                 .FirstOrDefaultAsync(t => t.Id == id);
 
             if (tag== null) NotFound();
+
             return View(tag);
             
         }

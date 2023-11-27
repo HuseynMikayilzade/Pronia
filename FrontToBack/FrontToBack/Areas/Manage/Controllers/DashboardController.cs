@@ -1,4 +1,4 @@
-﻿using FrontToBack.Areas.Manage.ViewModel;
+﻿
 using FrontToBack.DAL;
 using FrontToBack.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -11,7 +11,6 @@ namespace FrontToBack.Areas.Manage.Controllers
     {
         public IActionResult Index()
         {
-           
             return View();
         }
     }

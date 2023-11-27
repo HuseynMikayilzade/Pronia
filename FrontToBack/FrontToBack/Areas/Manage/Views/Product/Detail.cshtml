@@ -1,0 +1,38 @@
+﻿@model Product
+<div class=" pt-5">
+        <div class=" ml-5" >
+        <div class="row text-center">
+            <div class="col-4 ">
+                <img style="width:250px;height:200px" src="~/assets/images/website-images/@Model.ProductImages.FirstOrDefault(p=>p.IsPrimary==true).Url" class="card-img-top" alt="...">
+                <h5>Primary</h5>
+            </div>
+            <div class="col-4">
+                <img style="width:250px;height:200px" src="~/assets/images/website-images/@Model.ProductImages.FirstOrDefault(p=>p.IsPrimary==false).Url" class="card-img-top" alt="...">
+                <h5>Hover</h5>
+            </div>
+
+            <div class="col-4">
+                <img style="width:250px;height:200px" src="~/assets/images/website-images/@Model.ProductImages.FirstOrDefault(p=>p.IsPrimary==null).Url" class="card-img-top" alt="...">
+                <h5>Others</h5>
+            </div>   
+            </div>
+           
+           
+            <div class="card-body pt-5">
+                <h5 class="card-title">@Model.Name</h5>
+            <p class="card-text"> @Model.Description</p>
+            <p class="card-text">Color: @Model.ProductColors.FirstOrDefault(ps=>ps.ProductId==Model.Id).Color.Name</p>
+
+            <p class="card-text">Sku: @Model.SKU</p>
+            <p class="card-text">Size: @Model.ProductSizes.FirstOrDefault(ps=>ps.ProductId==Model.Id).Size.Name</p>
+
+            <p class="card-text">Price: @Model.Price $</p>
+
+            <p class="card-text">Tag: @Model.ProductTags.FirstOrDefault(pt=>pt.ProductId==Model.Id).Tag.Name</p>
+
+                <a asp-controller="product" asp-action="index" class="btn btn-success">Cancel</a>
+
+            </div>
+        </div>
+
+</div>

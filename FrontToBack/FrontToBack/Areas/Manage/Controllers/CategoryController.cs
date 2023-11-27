@@ -1,4 +1,4 @@
-﻿using FrontToBack.Areas.Manage.ViewModel;
+﻿
 using FrontToBack.DAL;
 using FrontToBack.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -18,11 +18,8 @@ namespace FrontToBack.Areas.Manage.Controllers
         {
             List<Category> categories = await _context.Categories.Include(c=>c.Products).ToListAsync();
 
-            DashboardVm vm = new DashboardVm
-            {
-                Categories=categories
-            };
-            return View(vm);
+       
+            return View(categories);
         }
 
 

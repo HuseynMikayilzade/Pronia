@@ -1,4 +1,4 @@
-﻿using FrontToBack.Areas.Manage.ViewModel;
+﻿using FrontToBack.Areas.Manage.ViewModels;
 using FrontToBack.DAL;
 using FrontToBack.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -19,32 +19,36 @@ namespace FrontToBack.Areas.Manage.Controllers
         public async Task<IActionResult> Index()
         {
             List<Color> colors = await _context.Colors.Include(c=>c.ProductColors).ToListAsync();
-            DashboardVm vm = new DashboardVm
-            {
-                Colors= colors
-            };
-            return View(vm);
+            
+            
+            return View(colors);
         }
 
         //========================================== Create =======================================//
 
         public IActionResult Create()
         {
+
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> Create(Color color)
+        public async Task<IActionResult> Create(CreateColorVm createColorVm)
         {
            if (!ModelState.IsValid)
            {
                 return View();
            }
-           bool result = _context.Colors.Any(c=>c.Name.Trim() == color.Name.Trim());
+           bool result = _context.Colors.Any(c=>c.Name.Trim() == createColorVm.Name.Trim());
             if (result)
             {
                 ModelState.AddModelError("Name","This color is aviable");
                 return View();
             }
+
+            Color color = new Color
+            {
+                Name = createColorVm.Name,
+            };
             await _context.Colors.AddAsync(color);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
@@ -59,11 +63,14 @@ namespace FrontToBack.Areas.Manage.Controllers
             if (id <= 0) BadRequest();
             Color color = await _context.Colors.FirstOrDefaultAsync(c=>c.Id == id);
             if (color == null) NotFound();
-            return View(color);
+            UpdateColorVm updateColorVm = new UpdateColorVm{
+                Name=color.Name
+            };
+            return View(updateColorVm);
 
         }
         [HttpPost]
-        public async Task<IActionResult> Update(int id ,Color color)
+        public async Task<IActionResult> Update(int id ,UpdateColorVm updateColorVm)
         {
             if (!ModelState.IsValid)
             {
@@ -73,14 +80,14 @@ namespace FrontToBack.Areas.Manage.Controllers
 
             if (exist == null) NotFound();
 
-            bool result = await _context.Colors.AnyAsync(c=>c.Name == color.Name && c.Id!=id);
+            bool result = await _context.Colors.AnyAsync(c=>c.Name == updateColorVm.Name && c.Id!=id);
 
             if (result)
             {
                 ModelState.AddModelError("Name", "This color is aviable");
                 return View();
             }
-            exist.Name= color.Name;
+            exist.Name= updateColorVm.Name;
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }

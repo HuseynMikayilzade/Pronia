@@ -1,4 +1,6 @@
-﻿using FrontToBack.DAL;
+﻿using FrontToBack.Areas.Manage.ViewModels;
+using FrontToBack.Areas.Manage.ViewModels.Slide;
+using FrontToBack.DAL;
 using FrontToBack.Models;
 using FrontToBack.Utilities.Extention;
 using Microsoft.AspNetCore.Mvc;
@@ -31,24 +33,18 @@ namespace FrontToBack.Areas.Manage.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> Create(Slide slide)
+        public async Task<IActionResult> Create(CreateSlideVm slideVm)
         {
             if (!ModelState.IsValid)
             {
                 return View();
             }
-
-            if (slide.Photo == null)
-            {
-                ModelState.AddModelError("Photo", "Sekil daxil edin");
-                return View();
-            }
-            if (!slide.Photo.CheckType("image/"))  
+            if (!slideVm.Photo.CheckType("image/"))  
             {
                 ModelState.AddModelError("Photo", "faylin tipi uygun deyil");
                 return View();
             }
-            if (slide.Photo.CheckSize(3))
+            if (slideVm.Photo.CheckSize(3))
             {
                 ModelState.AddModelError("Photo", "Seklin olcusu 3mb-den artiq olmamalidir.");
                 return View();
@@ -57,8 +53,15 @@ namespace FrontToBack.Areas.Manage.Controllers
 
 
 
-            slide.Image = await slide.Photo.CreateFileAsync(_env.WebRootPath, "uploads", "slide");
+            string filename = await slideVm.Photo.CreateFileAsync(_env.WebRootPath, "uploads", "slide");
 
+            Slide slide = new Slide
+            {
+                Desc = slideVm.Desc,
+                Title = slideVm.Title,
+                subTitle = slideVm.subTitle,
+                Order = slideVm.Order,
+            };
             await _context.Slides.AddAsync(slide);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
@@ -106,10 +109,20 @@ namespace FrontToBack.Areas.Manage.Controllers
 
             if (existed == null) return NotFound();
 
-            return View(existed);
+            UpdateSlideVm updateSlideVm = new UpdateSlideVm
+            {
+                Desc = existed.Desc,
+                Order = existed.Order,
+                subTitle =existed.subTitle,
+                Title = existed.Title,
+                Photo = existed.Photo
+                
+            };
+
+            return View(updateSlideVm);
         }
         [HttpPost]
-        public async Task<IActionResult> Update(int id,Slide slide)
+        public async Task<IActionResult> Update(int id, UpdateSlideVm updateSlideVm)
         {
             Slide exist =await _context.Slides.FirstOrDefaultAsync(s=>s.Id == id);
             if (exist == null) return NotFound();
@@ -117,27 +130,27 @@ namespace FrontToBack.Areas.Manage.Controllers
             {
                 return View();
             }
-            if (slide.Photo != null)
+            if (updateSlideVm.Photo != null)
             {
-                    if (!slide.Photo.CheckType("image/"))
+                    if (!updateSlideVm.Photo.CheckType("image/"))
                     {
                         ModelState.AddModelError("Photo", "faylin tipi uygun deyil");
                         return View();
                     }
-                    if (slide.Photo.CheckSize(3))
+                    if (updateSlideVm.Photo.CheckSize(3))
                     {
                         ModelState.AddModelError("Photo", "Seklin olcusu 3mb-den artiq olmamalidir.");
                         return View();
                     }
-                string filename = await slide.Photo.CreateFileAsync(_env.WebRootPath, "uploads", "slide");
+                string filename = await updateSlideVm.Photo.CreateFileAsync(_env.WebRootPath, "uploads", "slide");
                 exist.Image.DeleteFile(_env.WebRootPath, "uploads", "slide");
                 exist.Image = filename;
             }
             
-            exist.Title= slide.Title;
-            exist.subTitle = slide.Title;
-            exist.Desc = slide.Desc;
-            exist.Order = slide.Order;
+            exist.Title= updateSlideVm.Title;
+            exist.subTitle = updateSlideVm.Title;
+            exist.Desc = updateSlideVm.Desc;
+            exist.Order = updateSlideVm.Order;
             await _context.SaveChangesAsync();
 
             return RedirectToAction(nameof(Index));
