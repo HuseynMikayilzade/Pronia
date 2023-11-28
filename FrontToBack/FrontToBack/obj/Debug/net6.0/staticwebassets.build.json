@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "XZP6mCM/sDoEeU9qDXGSbx1AXD2zU8RPahHM9VoXMnY=",
+  "Hash": "g2NTCzMo+lR9S285JHxZ83wNsjPu0Xv2cye0k1QKrvs=",
   "Source": "FrontToBack",
   "BasePath": "_content/FrontToBack",
   "Mode": "Default",
@@ -5727,6 +5727,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\uploads\\slide\\0bc8deab-81cf-47da-8872-b894497cf70fflower-25-570x633.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\uploads\\slide\\54c3f369-a7eb-45ab-8fde-ad725457cb53flower-27-570x633.jpg",
+      "SourceId": "FrontToBack",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\",
+      "BasePath": "_content/FrontToBack",
+      "RelativePath": "uploads/slide/54c3f369-a7eb-45ab-8fde-ad725457cb53flower-27-570x633.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\slide\\54c3f369-a7eb-45ab-8fde-ad725457cb53flower-27-570x633.jpg"
     },
     {
       "Identity": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\uploads\\slide\\da39eaf5-dad7-4a96-9a3d-8266b2ea92a0flower-9-570x633.jpg",
