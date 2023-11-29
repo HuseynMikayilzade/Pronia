@@ -10,7 +10,7 @@ namespace FrontToBack.Areas.Manage.ViewModels
         public int Order { get; set; }
         public string SKU { get; set; }
         public int CategoryId { get; set; }
-        public List<int> TagIds { get; set; }
+        public List<int>? TagIds { get; set; }
         public List<int> SizeIds { get; set; }
         public List<int> ColorIds { get; set; }
         public List<Category>? Categories { get; set; }

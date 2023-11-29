@@ -2,6 +2,7 @@
 using FrontToBack.DAL;
 using FrontToBack.Migrations;
 using FrontToBack.Models;
+using FrontToBack.Utilities.Extention;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -11,10 +12,12 @@ namespace FrontToBack.Areas.Manage.Controllers
     public class ProductController : Controller
     {
         private readonly AppDbContext _context;
+        private readonly IWebHostEnvironment _env;
 
-        public ProductController(AppDbContext context)
+        public ProductController(AppDbContext context,IWebHostEnvironment env)
         {
             _context = context;
+            _env = env;
         }
 
         public async Task<IActionResult> Index()
@@ -59,7 +62,6 @@ namespace FrontToBack.Areas.Manage.Controllers
             }
 
             bool categoryresult = await _context.Categories.AnyAsync(c => c.Id == createVm.CategoryId);
-
             if (!categoryresult)
             {
                 createVm.Categories = await _context.Categories.ToListAsync();
@@ -70,11 +72,9 @@ namespace FrontToBack.Areas.Manage.Controllers
                 return View(createVm);
             }
 
-
             foreach (var colorId in createVm.ColorIds)
-            {
-                bool colorresult = await _context.Colors.AnyAsync(c => c.Id == colorId);
-                if (!colorresult)
+            {       
+                if (!await _context.Colors.AnyAsync(c => c.Id == colorId))
                 {
                         createVm.Categories = await _context.Categories.ToListAsync();
                         createVm.Tags = await _context.Tags.ToListAsync();
@@ -87,34 +87,81 @@ namespace FrontToBack.Areas.Manage.Controllers
 
             foreach (var sizeId in createVm.SizeIds)
             {
-                bool sizeresult =await _context.Sizes.AnyAsync(s => s.Id == sizeId);
-
-                if (!sizeresult)
+                if (!await _context.Sizes.AnyAsync(s => s.Id == sizeId))
                 {
                     createVm.Categories = await _context.Categories.ToListAsync();
                     createVm.Tags = await _context.Tags.ToListAsync();
                     createVm.Sizes = await _context.Sizes.ToListAsync();
                     createVm.Colors = await _context.Colors.ToListAsync();
                     ModelState.AddModelError("SizeIds", "size duzgun deyil");
-                    return View();
+                    return View(createVm);
                 }
             }
 
             foreach (var tagId in createVm.TagIds)
-            {
-                bool tagresult = await _context.Tags.AnyAsync(t => t.Id == tagId);
-                if (tagresult)
+            { 
+                if (!await _context.Tags.AnyAsync(t => t.Id == tagId))
                 {
                     createVm.Categories = await _context.Categories.ToListAsync();
                     createVm.Tags = await _context.Tags.ToListAsync();
                     createVm.Sizes = await _context.Sizes.ToListAsync();
                     createVm.Colors = await _context.Colors.ToListAsync();
                     ModelState.AddModelError("TagIds", "tag duzgun deyil");
-                    return View();
+                    return View(createVm);
                 }
             }
-           
-            
+
+            if (!createVm.MainPhoto.CheckType("image/"))
+            {
+                createVm.Categories = await _context.Categories.ToListAsync();
+                createVm.Tags = await _context.Tags.ToListAsync();
+                createVm.Sizes = await _context.Sizes.ToListAsync();
+                createVm.Colors = await _context.Colors.ToListAsync();
+                ModelState.AddModelError("MainPhoto", "The file type is incorrect");
+                return View(createVm);
+            }
+            if (!createVm.HoverPhoto.CheckType("image/"))
+            {
+                createVm.Categories = await _context.Categories.ToListAsync();
+                createVm.Tags = await _context.Tags.ToListAsync();
+                createVm.Sizes = await _context.Sizes.ToListAsync();
+                createVm.Colors = await _context.Colors.ToListAsync();
+                ModelState.AddModelError("HoverPhoto", "The file type is incorrect");
+                return View(createVm);
+            }
+
+            if (createVm.MainPhoto.CheckSize(3))
+            {
+                createVm.Categories = await _context.Categories.ToListAsync();
+                createVm.Tags = await _context.Tags.ToListAsync();
+                createVm.Sizes = await _context.Sizes.ToListAsync();
+                createVm.Colors = await _context.Colors.ToListAsync();
+                ModelState.AddModelError("MainPhoto", "The file size is incorrect");
+                return View(createVm);
+            }
+            if (createVm.HoverPhoto.CheckSize(3))
+            {
+                createVm.Categories = await _context.Categories.ToListAsync();
+                createVm.Tags = await _context.Tags.ToListAsync();
+                createVm.Sizes = await _context.Sizes.ToListAsync();
+                createVm.Colors = await _context.Colors.ToListAsync();
+                ModelState.AddModelError("HoverPhoto", "The file size is incorrect");
+                return View(createVm);
+            }
+
+
+            //==============================MainPhoto=================================//
+            ProductImage mainphoto = new ProductImage
+            {
+                IsPrimary=true,
+                Url = await createVm.MainPhoto.CreateFileAsync(_env.WebRootPath,"assets", "images", "website-images")
+            };
+            //==============================HoverPhoto=================================//
+            ProductImage hoverphoto = new ProductImage
+            {
+                IsPrimary =false,
+                Url = await createVm.HoverPhoto.CreateFileAsync(_env.WebRootPath, "assets", "images", "website-images")
+            };
 
             Product product = new Product
             {
@@ -126,8 +173,33 @@ namespace FrontToBack.Areas.Manage.Controllers
                 CategoryId = (int)createVm.CategoryId,
                 ProductTags = new List<ProductTag>(),
                 ProductColors = new List<ProductColor>(),
-                ProductSizes = new List<ProductSize>()
+                ProductSizes = new List<ProductSize>(),
+                ProductImages = new List<ProductImage> { mainphoto,hoverphoto},
+                
             };
+
+            //==============================AdditionalPhotos=================================//
+            TempData["Message"] = "";
+            foreach (var item in createVm.AdditionalPhotos ?? new List<IFormFile>()) //exception vermesin
+            {
+                if (!item.CheckType("image/"))
+                {
+                    TempData["Message"] += $"<div class=\"alert alert-danger\" role=\"alert\">{item.FileName} The file type is incorrect</div>";
+                    continue;
+                }
+                if (item.CheckSize(2))
+                {
+                    TempData["Message"]+= $"<div class=\"alert alert-danger\" role=\"alert\">{item.FileName} The file size is incorrect</div>";
+                    continue;
+                }
+                product.ProductImages.Add(new ProductImage
+                {
+                    IsPrimary = null,
+                    Url =await item.CreateFileAsync(_env.WebRootPath, "assets", "images", "website-images")
+
+                });
+               
+            }
 
             //==============================Tags=================================//
           
@@ -221,56 +293,85 @@ namespace FrontToBack.Areas.Manage.Controllers
                 ModelState.AddModelError("CategoryId", "Bele bir id-li product yoxdur");
                 return View(updateProductVm);
             }
+            foreach (var item in updateProductVm.TagIds)
+            {
+                if (! await _context.Tags.AnyAsync(t=>t.Id==item))
+                {
+                    updateProductVm.Tags = await _context.Tags.ToListAsync();
+                    updateProductVm.Colors = await _context.Colors.ToListAsync();
+                    updateProductVm.Sizes = await _context.Sizes.ToListAsync();
+                    ModelState.AddModelError("TagIds", "bu idli tag yoxdur");
+                    return View(updateProductVm);
+                }
+            }
+            foreach (var item in updateProductVm.SizeIds)
+            {
+                if (!await _context.Sizes.AnyAsync(t => t.Id == item))
+                {
+                    updateProductVm.Tags = await _context.Tags.ToListAsync();
+                    updateProductVm.Colors = await _context.Colors.ToListAsync();
+                    updateProductVm.Sizes = await _context.Sizes.ToListAsync();
+                    ModelState.AddModelError("SizeIds", "bu idli size yoxdur");
+                    return View(updateProductVm);
+                }
+            }
+            foreach (var item in updateProductVm.ColorIds)
+            {
+                if (!await _context.Colors.AnyAsync(t => t.Id == item))
+                {
+                    updateProductVm.Tags = await _context.Tags.ToListAsync();
+                    updateProductVm.Colors = await _context.Colors.ToListAsync();
+                    updateProductVm.Sizes = await _context.Sizes.ToListAsync();
+                    ModelState.AddModelError("ColorIds", "bu idli color yoxdur");
+                    return View(updateProductVm);
+                }
+            }
+
 
             //==============================Size=================================//
 
-            foreach (var psize in exist.ProductSizes)
+            if (updateProductVm.SizeIds is not null)
             {
-                if (!updateProductVm.SizeIds.Exists(ti=>ti==psize.Id))
-                {
-                    _context.ProductSizes.Remove(psize);
-                }
-            }
-            foreach (var sizeId in updateProductVm.SizeIds)
-            {
-                if (! exist.ProductSizes.Any(ps=>ps.SizeId==sizeId))
-                {
-                    exist.ProductSizes.Add(new ProductSize { SizeId = sizeId, });
-                }
-            }
-            //==============================Colors=================================//
+               exist.ProductSizes.RemoveAll(ps=> !updateProductVm.SizeIds.Exists(si=>si==ps.SizeId));
 
-            foreach (var pcolor in exist.ProductColors)
-            {
-                if (!updateProductVm.ColorIds.Exists(ci=>ci==pcolor.Id))
+                foreach (var item in updateProductVm.SizeIds)
                 {
-                    _context.ProductColors.Remove(pcolor);
+                    if (!exist.ProductSizes.Any(ps=>ps.SizeId==item))
+                    {
+                        exist.ProductSizes.Add(new ProductSize { SizeId = item });
+                    }
                 }
             }
-            foreach (var colorId in updateProductVm.ColorIds)
+
+            //==============================Colors=================================//
+            if (updateProductVm.ColorIds is not null)
             {
-                if (!exist.ProductColors.Any(pc=>pc.ColorId==colorId))
+                exist.ProductColors.RemoveAll(pt => !updateProductVm.ColorIds.Exists(ti => ti == pt.ColorId));
+                foreach (var colorId in updateProductVm.ColorIds)
                 {
-                    exist.ProductColors.Add(new ProductColor { ColorId = colorId });
+                    if (!exist.ProductColors.Any(pc=>pc.ColorId==colorId))
+                    {
+                        exist.ProductColors.Add(new ProductColor { ColorId = colorId });
+                    }
                 }
             }
+
 
             //==============================Tags=================================//
 
-            foreach (var ptag in exist.ProductTags)
-            {
-                if (!updateProductVm.TagIds.Exists(ti=>ti==ptag.Id))
+            if (updateProductVm.TagIds is not null)
+            { 
+                exist.ProductTags.RemoveAll(pt => !updateProductVm.TagIds.Exists(ti => ti == pt.TagId));
+                foreach (var tagId in updateProductVm.TagIds)
                 {
-                    _context.ProductTags.Remove(ptag);
+                    if (!exist.ProductTags.Any(pt=>pt.TagId==tagId))
+                    {
+                        exist.ProductTags.Add(new ProductTag {  TagId = tagId });
+                    }
                 }
+
             }
-            foreach (var tagId in updateProductVm.TagIds)
-            {
-                if (!exist.ProductTags.Any(pt=>pt.TagId==tagId))
-                {
-                    exist.ProductTags.Add(new ProductTag {  TagId = tagId });
-                }
-            }
+           
 
 
             exist.SKU=updateProductVm.SKU;
@@ -284,7 +385,6 @@ namespace FrontToBack.Areas.Manage.Controllers
             return RedirectToAction(nameof(Index));
 
         }
-
 
         public async Task<IActionResult> Delete(int id)
         {

@@ -49,17 +49,17 @@
                                 <div class="swiper-wrapper">
                                     <a href="#" class="swiper-slide">
                                         <img class="img-full"
-                                             src="~/assets/images/website-images/@Model.Product.ProductImages.FirstOrDefault(pi=>pi.IsPrimary==true).Url"
-                                             alt="Product Thumnail" /> @*//sekil qoyacam//*@
+                                             src="~/assets/images/website-images/@Model.Product.ProductImages.FirstOrDefault(pi=>pi.IsPrimary==true)?.Url"
+                                             alt="Product Thumnail" /> 
                                     </a>
                                     <a href="#" class="swiper-slide">
                                         <img class="img-full"
-                                             src="~/assets/images/website-images/@Model.Product.ProductImages.FirstOrDefault(pi=>pi.IsPrimary==false).Url"
+                                             src="~/assets/images/website-images/@Model.Product.ProductImages.FirstOrDefault(pi=>pi.IsPrimary==false)?.Url"
                                              alt="Product Thumnail" />
                                     </a>
                                     <a href="#" class="swiper-slide">
                                         <img class="img-full"
-                                             src="~/assets/images/website-images//@Model.Product.ProductImages.FirstOrDefault(pi=>pi.IsPrimary==null).Url"
+                                             src="~/assets/images/website-images//@Model.Product.ProductImages.FirstOrDefault(pi=>pi.IsPrimary==null)?.Url"
                                              alt="Product Thumnail" />
                                     </a>
 

@@ -8,7 +8,7 @@
         <div class="card">
             <div class="card-body">
                 <h4 class="card-title"><a asp-action="create" type="button" class="btn btn-success btn-fw">Create Product</a></h4>
-
+                @Html.Raw(TempData["Message"])
                 <div class="table-responsive pt-3">
                     <table class="table table-dark text-center">
                         <thead>

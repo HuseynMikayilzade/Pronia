@@ -3,7 +3,7 @@
 <div class="card">
     <div class="card-body">
         <h4 class="card-title">Create Product</h4>
-
+        
         <form class="forms-sample" method="post" enctype="multipart/form-data" asp-action="create">
             <div class="form-group">
                 <label asp-for="Name"></label>
@@ -11,7 +11,22 @@
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for=Price>Slide price</label>
+                <label asp-for="MainPhoto"></label>
+                <input asp-for="MainPhoto" class="form-control" >
+                <span asp-validation-for="MainPhoto" class="text-danger"></span>
+            </div>
+             <div class="form-group">
+                <label asp-for="HoverPhoto"></label>
+                <input asp-for="HoverPhoto" class="form-control">
+                <span asp-validation-for="HoverPhoto" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AdditionalPhotos"></label>
+                <input asp-for="AdditionalPhotos" class="form-control">
+                <span asp-validation-for="AdditionalPhotos" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for=Price>Price</label>
                 <input asp-for=Price class="form-control" placeholder="Price">
                 <span asp-validation-for="Price" class="text-danger pt-1"></span>
             </div>
@@ -19,7 +34,6 @@
                 <label asp-for="CategoryId" for="CategoryId">Category</label>
                 <select asp-for="CategoryId" class="form-control" id="CategoryId" asp-items="new SelectList(Model.Categories ,nameof(Category.Id),nameof(Category.Name))">
                     <option selected disabled>Choose Category</option>
-
                 </select>
                 <span asp-validation-for="CategoryId" class="text-danger pt-1"></span>
             </div>
@@ -51,17 +65,17 @@
 
             </div>
             <div class="form-group">
-                <label asp-for=Description>Slide Description</label>
+                <label asp-for=Description>Description</label>
                 <input asp-for=Description class="form-control" placeholder="Description">
                 <span asp-validation-for="Description" class="text-danger pt-1"></span>
             </div>
             <div class="form-group">
-                <label asp-for=Order>Slide Order</label>
+                <label asp-for=Order>Order</label>
                 <input asp-for=Order class="form-control" placeholder="Order">
                 <span asp-validation-for="Order" class="text-danger pt-1"></span>
             </div>
             <div class="form-group">
-                <label asp-for=SKU>Slide SKU</label>
+                <label asp-for=SKU>SKU</label>
                 <input asp-for=SKU class="form-control" placeholder="Ch-256xl">
                 <span asp-validation-for="SKU" class="text-danger pt-1"></span>
             </div>
