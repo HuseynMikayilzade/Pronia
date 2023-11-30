@@ -9,9 +9,9 @@ namespace FrontToBack.Utilities.Extention
             return file.ContentType.Contains(type);
         }
 
-        public static bool CheckSize(this IFormFile file,int kb)
+        public static bool CheckSize(this IFormFile file,int mb)
         {
-            return file.Length > kb * 1024 * 1024;
+            return file.Length > mb * 1024 * 1024;
         }
 
         public static async Task<string> CreateFileAsync(this IFormFile file,string root,params string[] folders)
@@ -25,20 +25,17 @@ namespace FrontToBack.Utilities.Extention
             path=Path.Combine(path,filname);
             using(FileStream stream = new FileStream(path, FileMode.Create))
             {
-                await stream.CopyToAsync(stream);
-
+                await file.CopyToAsync(stream);
             }
 
             return filname;
         }
-
         public static async void DeleteFile(this string filename,string root , params string[]  folders)
         {
             string path = root;
             for (int i = 0; i < folders.Length; i++)
             {
                 path = Path.Combine (path, folders[i]);
-
             }
             path=Path.Combine(path,filename);
             if (File.Exists(path))

@@ -53,7 +53,7 @@ namespace FrontToBack.Areas.Manage.Controllers
 
 
 
-            string filename = await slideVm.Photo.CreateFileAsync(_env.WebRootPath, "uploads", "slide");
+            string filename = await slideVm.Photo.CreateFileAsync(_env.WebRootPath, "assets", "images", "slider","slide-img");
 
             Slide slide = new Slide
             {
@@ -91,7 +91,7 @@ namespace FrontToBack.Areas.Manage.Controllers
             Slide exist = await _context.Slides.FirstOrDefaultAsync(slide => slide.Id == id);
             if (exist == null) return NotFound();
 
-            exist.Image.DeleteFile(_env.WebRootPath, "uploads", "slide");
+            exist.Image.DeleteFile(_env.WebRootPath, "assets", "images", "slider", "slide-img");
            
             _context.Remove(exist);
             await _context.SaveChangesAsync();
@@ -142,8 +142,8 @@ namespace FrontToBack.Areas.Manage.Controllers
                         ModelState.AddModelError("Photo", "Seklin olcusu 3mb-den artiq olmamalidir.");
                         return View();
                     }
-                string filename = await updateSlideVm.Photo.CreateFileAsync(_env.WebRootPath, "uploads", "slide");
-                exist.Image.DeleteFile(_env.WebRootPath, "uploads", "slide");
+                string filename = await updateSlideVm.Photo.CreateFileAsync(_env.WebRootPath, "assets","images", "slider", "slide-img");
+                exist.Image.DeleteFile(_env.WebRootPath, "assets", "images", "slider", "slide-img");
                 exist.Image = filename;
             }
             

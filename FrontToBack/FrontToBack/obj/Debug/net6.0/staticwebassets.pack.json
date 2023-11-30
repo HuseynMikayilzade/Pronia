@@ -1,10 +1,6 @@
 {
   "Files": [
     {
-      "Id": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\25787a52-8019-4a07-ba6f-df2b5c2df46bflower-27-570x633.jpg",
-      "PackagePath": "staticwebassets\\25787a52-8019-4a07-ba6f-df2b5c2df46bflower-27-570x633.jpg"
-    },
-    {
       "Id": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\assets\\css\\Pe-icon-7-stroke.css",
       "PackagePath": "staticwebassets\\assets\\css\\Pe-icon-7-stroke.css"
     },
@@ -397,10 +393,6 @@
       "PackagePath": "staticwebassets\\assets\\images\\sidebar\\banner\\1-270x300.jpg"
     },
     {
-      "Id": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\assets\\images\\slider\\1e250b8d-718b-4b55-94dc-4a0846847e8eflower-27-570x633.jpg",
-      "PackagePath": "staticwebassets\\assets\\images\\slider\\1e250b8d-718b-4b55-94dc-4a0846847e8eflower-27-570x633.jpg"
-    },
-    {
       "Id": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\assets\\images\\slider\\bg\\1-1.jpg",
       "PackagePath": "staticwebassets\\assets\\images\\slider\\bg\\1-1.jpg"
     },
@@ -415,6 +407,10 @@
     {
       "Id": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\assets\\images\\slider\\inner-img\\1-2-524x617.png",
       "PackagePath": "staticwebassets\\assets\\images\\slider\\inner-img\\1-2-524x617.png"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\assets\\images\\slider\\slide-img\\1e250b8d-718b-4b55-94dc-4a0846847e8eflower-27-570x633.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\slider\\slide-img\\1e250b8d-718b-4b55-94dc-4a0846847e8eflower-27-570x633.jpg"
     },
     {
       "Id": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\assets\\images\\slider\\slide-img\\2-1-960x741.jpg",
@@ -447,6 +443,10 @@
     {
       "Id": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\assets\\images\\testimonial\\user\\3.png",
       "PackagePath": "staticwebassets\\assets\\images\\testimonial\\user\\3.png"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\assets\\images\\website-images\\03cb1179-f177-4cd7-8e36-c2cf4572ab12360_F_311487801_tg25oIsZHTgAyx1cvTcic8ZhNtdYuBoe.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\website-images\\03cb1179-f177-4cd7-8e36-c2cf4572ab12360_F_311487801_tg25oIsZHTgAyx1cvTcic8ZhNtdYuBoe.jpg"
     },
     {
       "Id": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\assets\\images\\website-images\\1--1rnu4p.png",
@@ -609,6 +609,18 @@
       "PackagePath": "staticwebassets\\assets\\images\\website-images\\1.png"
     },
     {
+      "Id": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\assets\\images\\website-images\\10b44522-61ad-4110-bb71-bd86d770282cKamal_Sunal.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\website-images\\10b44522-61ad-4110-bb71-bd86d770282cKamal_Sunal.jpg"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\assets\\images\\website-images\\117a56f6-ac79-4dc3-b6bd-38cca95d5eee2741689_620x410.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\website-images\\117a56f6-ac79-4dc3-b6bd-38cca95d5eee2741689_620x410.jpg"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\assets\\images\\website-images\\1e48bc30-e6d8-4d4d-8592-fdbd3bcd6f1cflower-23-570x633.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\website-images\\1e48bc30-e6d8-4d4d-8592-fdbd3bcd6f1cflower-23-570x633.jpg"
+    },
+    {
       "Id": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\assets\\images\\website-images\\2-1-370x270.webp",
       "PackagePath": "staticwebassets\\assets\\images\\website-images\\2-1-370x270.webp"
     },
@@ -633,16 +645,120 @@
       "PackagePath": "staticwebassets\\assets\\images\\website-images\\2.png"
     },
     {
+      "Id": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\assets\\images\\website-images\\2159a7a5-c6fe-4b09-b40f-d1e7235eab28Kamal_Sunal.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\website-images\\2159a7a5-c6fe-4b09-b40f-d1e7235eab28Kamal_Sunal.jpg"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\assets\\images\\website-images\\25787a52-8019-4a07-ba6f-df2b5c2df46bflower-27-570x633.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\website-images\\25787a52-8019-4a07-ba6f-df2b5c2df46bflower-27-570x633.jpg"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\assets\\images\\website-images\\25b1b1a6-fc8f-4930-af42-5fdd0529aced9050.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\website-images\\25b1b1a6-fc8f-4930-af42-5fdd0529aced9050.jpg"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\assets\\images\\website-images\\2b701e88-a456-4e43-ae89-e02b7e1affc91200px-Skype_logo.svg.png",
+      "PackagePath": "staticwebassets\\assets\\images\\website-images\\2b701e88-a456-4e43-ae89-e02b7e1affc91200px-Skype_logo.svg.png"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\assets\\images\\website-images\\2d9008e9-0ee0-459a-9806-6820295b0743618cd5e14e3fe00eb020890b.webp",
+      "PackagePath": "staticwebassets\\assets\\images\\website-images\\2d9008e9-0ee0-459a-9806-6820295b0743618cd5e14e3fe00eb020890b.webp"
+    },
+    {
       "Id": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\assets\\images\\website-images\\3.png",
       "PackagePath": "staticwebassets\\assets\\images\\website-images\\3.png"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\assets\\images\\website-images\\32875bc4-4dcd-4f6c-ace0-057ff3fc49b756431e32cbbf341a3c9c1434.webp",
+      "PackagePath": "staticwebassets\\assets\\images\\website-images\\32875bc4-4dcd-4f6c-ace0-057ff3fc49b756431e32cbbf341a3c9c1434.webp"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\assets\\images\\website-images\\371214ef-456e-4e12-95e6-b870ab345b43162985.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\website-images\\371214ef-456e-4e12-95e6-b870ab345b43162985.jpg"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\assets\\images\\website-images\\390ba8d1-1b7a-483a-a82e-f64b98b3f28f618cd5e14e3fe00eb020890b.webp",
+      "PackagePath": "staticwebassets\\assets\\images\\website-images\\390ba8d1-1b7a-483a-a82e-f64b98b3f28f618cd5e14e3fe00eb020890b.webp"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\assets\\images\\website-images\\4226ec1a-0ba6-4a98-9436-024cc1d1c795447983seyavsud.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\website-images\\4226ec1a-0ba6-4a98-9436-024cc1d1c795447983seyavsud.jpg"
     },
     {
       "Id": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\assets\\images\\website-images\\480bf4f8-f6d0-4a82-927b-d8e701220aa4andrew-seaman-14HyRO75p24-unsplash.jpg",
       "PackagePath": "staticwebassets\\assets\\images\\website-images\\480bf4f8-f6d0-4a82-927b-d8e701220aa4andrew-seaman-14HyRO75p24-unsplash.jpg"
     },
     {
+      "Id": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\assets\\images\\website-images\\4a356368-e0b9-481a-b895-d5a61430f618pexels-nout-gons-378570.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\website-images\\4a356368-e0b9-481a-b895-d5a61430f618pexels-nout-gons-378570.jpg"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\assets\\images\\website-images\\4ee590e1-e486-49ce-8e73-9294350b2332162985.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\website-images\\4ee590e1-e486-49ce-8e73-9294350b2332162985.jpg"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\assets\\images\\website-images\\4f6c3b55-2978-4ae9-bc6b-0582fec87dab56431e32cbbf341a3c9c1434.webp",
+      "PackagePath": "staticwebassets\\assets\\images\\website-images\\4f6c3b55-2978-4ae9-bc6b-0582fec87dab56431e32cbbf341a3c9c1434.webp"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\assets\\images\\website-images\\54c3f369-a7eb-45ab-8fde-ad725457cb53flower-27-570x633.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\website-images\\54c3f369-a7eb-45ab-8fde-ad725457cb53flower-27-570x633.jpg"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\assets\\images\\website-images\\56c997a1-578b-4343-ab6e-b635949c6b39flower-28-570x633.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\website-images\\56c997a1-578b-4343-ab6e-b635949c6b39flower-28-570x633.jpg"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\assets\\images\\website-images\\59058a40-0eed-4e9d-b4fe-94fc87c06a9442d0f32a6b76790e8d6f1ad6fcd30dbe_400x400.png",
+      "PackagePath": "staticwebassets\\assets\\images\\website-images\\59058a40-0eed-4e9d-b4fe-94fc87c06a9442d0f32a6b76790e8d6f1ad6fcd30dbe_400x400.png"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\assets\\images\\website-images\\60220fa0-1aab-4cc3-8815-62277a4b0524290417527_333655288969324_8020618734108173461_n.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\website-images\\60220fa0-1aab-4cc3-8815-62277a4b0524290417527_333655288969324_8020618734108173461_n.jpg"
+    },
+    {
       "Id": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\assets\\images\\website-images\\71307bdd-2d0b-46ae-b942-4cbd365191f5toyuqcorek.png",
       "PackagePath": "staticwebassets\\assets\\images\\website-images\\71307bdd-2d0b-46ae-b942-4cbd365191f5toyuqcorek.png"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\assets\\images\\website-images\\8275fb94-fbcc-4ae9-92f1-321bc29a346bimages (1).jfif",
+      "PackagePath": "staticwebassets\\assets\\images\\website-images\\8275fb94-fbcc-4ae9-92f1-321bc29a346bimages (1).jfif"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\assets\\images\\website-images\\86ad1f42-b0d3-4ba4-b10e-ba2566229c8542d0f32a6b76790e8d6f1ad6fcd30dbe_400x400.png",
+      "PackagePath": "staticwebassets\\assets\\images\\website-images\\86ad1f42-b0d3-4ba4-b10e-ba2566229c8542d0f32a6b76790e8d6f1ad6fcd30dbe_400x400.png"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\assets\\images\\website-images\\889092b2-20c1-44c8-8f22-3a09734337da345-low-res.webp",
+      "PackagePath": "staticwebassets\\assets\\images\\website-images\\889092b2-20c1-44c8-8f22-3a09734337da345-low-res.webp"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\assets\\images\\website-images\\8a93dd64-ef68-4d4d-87c1-a5834c584b69flower-29-570x633.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\website-images\\8a93dd64-ef68-4d4d-87c1-a5834c584b69flower-29-570x633.jpg"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\assets\\images\\website-images\\928a1d4f-4be2-4653-a024-ffcdea62a77eflower-30-570x633.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\website-images\\928a1d4f-4be2-4653-a024-ffcdea62a77eflower-30-570x633.jpg"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\assets\\images\\website-images\\98a68b5c-6db7-4b95-bb99-9841a8823a2b42d0f32a6b76790e8d6f1ad6fcd30dbe_400x400.png",
+      "PackagePath": "staticwebassets\\assets\\images\\website-images\\98a68b5c-6db7-4b95-bb99-9841a8823a2b42d0f32a6b76790e8d6f1ad6fcd30dbe_400x400.png"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\assets\\images\\website-images\\997c82df-3c4e-4c94-b3fb-00ccec977ec7162985.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\website-images\\997c82df-3c4e-4c94-b3fb-00ccec977ec7162985.jpg"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\assets\\images\\website-images\\a48dfd05-9c7a-4933-9b83-fc501c7201eb2741689_620x410.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\website-images\\a48dfd05-9c7a-4933-9b83-fc501c7201eb2741689_620x410.jpg"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\assets\\images\\website-images\\abb055f5-3e00-4340-8ccb-9d2bfa7c2e5456431e32cbbf341a3c9c1434.webp",
+      "PackagePath": "staticwebassets\\assets\\images\\website-images\\abb055f5-3e00-4340-8ccb-9d2bfa7c2e5456431e32cbbf341a3c9c1434.webp"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\assets\\images\\website-images\\b56e762c-0711-42a3-9a94-65bee874793f83-836045_msn-boneco-logo-vector-msn-messenger-logo-png.png",
+      "PackagePath": "staticwebassets\\assets\\images\\website-images\\b56e762c-0711-42a3-9a94-65bee874793f83-836045_msn-boneco-logo-vector-msn-messenger-logo-png.png"
     },
     {
       "Id": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\assets\\images\\website-images\\c1a7e6d0-3a60-4ffb-ab9b-2d28c33104daetlavas.png",
@@ -657,16 +773,80 @@
       "PackagePath": "staticwebassets\\assets\\images\\website-images\\card.png"
     },
     {
+      "Id": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\assets\\images\\website-images\\cc5e4896-d53d-40d6-9dc0-565904bbfe6c800px-Skype_logo_(2019–present).svg.png",
+      "PackagePath": "staticwebassets\\assets\\images\\website-images\\cc5e4896-d53d-40d6-9dc0-565904bbfe6c800px-Skype_logo_(2019–present).svg.png"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\assets\\images\\website-images\\cf0c85a7-3466-472f-a32d-5a88f03b061b948420.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\website-images\\cf0c85a7-3466-472f-a32d-5a88f03b061b948420.jpg"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\assets\\images\\website-images\\cf5b3606-1c19-4af7-95c3-24752b6039b3800px-Skype_logo_(2019–present).svg.png",
+      "PackagePath": "staticwebassets\\assets\\images\\website-images\\cf5b3606-1c19-4af7-95c3-24752b6039b3800px-Skype_logo_(2019–present).svg.png"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\assets\\images\\website-images\\d223ac13-481f-4601-82f9-80fa2b7e232083-836045_msn-boneco-logo-vector-msn-messenger-logo-png.png",
+      "PackagePath": "staticwebassets\\assets\\images\\website-images\\d223ac13-481f-4601-82f9-80fa2b7e232083-836045_msn-boneco-logo-vector-msn-messenger-logo-png.png"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\assets\\images\\website-images\\d41869c7-0f52-4a8e-8cfd-036473301b74345-low-res.webp",
+      "PackagePath": "staticwebassets\\assets\\images\\website-images\\d41869c7-0f52-4a8e-8cfd-036473301b74345-low-res.webp"
+    },
+    {
       "Id": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\assets\\images\\website-images\\d670188f-8cd7-48a7-9e15-6e847191fb51andrew-seaman-14HyRO75p24-unsplash.jpg",
       "PackagePath": "staticwebassets\\assets\\images\\website-images\\d670188f-8cd7-48a7-9e15-6e847191fb51andrew-seaman-14HyRO75p24-unsplash.jpg"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\assets\\images\\website-images\\d67ab772-b9d9-4aff-914b-fea8fcf21574pexels-saradasish-pradhan-18607077.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\website-images\\d67ab772-b9d9-4aff-914b-fea8fcf21574pexels-saradasish-pradhan-18607077.jpg"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\assets\\images\\website-images\\d87c2acd-79c7-4e14-84cb-1f2f0fd64f5cpexels-nout-gons-378570.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\website-images\\d87c2acd-79c7-4e14-84cb-1f2f0fd64f5cpexels-nout-gons-378570.jpg"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\assets\\images\\website-images\\d943e3d8-a6ad-463b-b6c2-a4d30ee61807flower-28-570x633.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\website-images\\d943e3d8-a6ad-463b-b6c2-a4d30ee61807flower-28-570x633.jpg"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\assets\\images\\website-images\\da39eaf5-dad7-4a96-9a3d-8266b2ea92a0flower-9-570x633.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\website-images\\da39eaf5-dad7-4a96-9a3d-8266b2ea92a0flower-9-570x633.jpg"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\assets\\images\\website-images\\da81edd6-3a77-4d95-9fd5-aa572438c87fKamal_Sunal.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\website-images\\da81edd6-3a77-4d95-9fd5-aa572438c87fKamal_Sunal.jpg"
     },
     {
       "Id": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\assets\\images\\website-images\\dark.png",
       "PackagePath": "staticwebassets\\assets\\images\\website-images\\dark.png"
     },
     {
-      "Id": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\assets\\images\\website-images\\flower-1-570x633.jpg",
-      "PackagePath": "staticwebassets\\assets\\images\\website-images\\flower-1-570x633.jpg"
+      "Id": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\assets\\images\\website-images\\dbfc30c7-fb10-4782-8687-923f55f6f8d2pexels-pixabay-358457.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\website-images\\dbfc30c7-fb10-4782-8687-923f55f6f8d2pexels-pixabay-358457.jpg"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\assets\\images\\website-images\\dc1ef1e3-a959-4093-ba99-e3b80575e19c345-low-res.webp",
+      "PackagePath": "staticwebassets\\assets\\images\\website-images\\dc1ef1e3-a959-4093-ba99-e3b80575e19c345-low-res.webp"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\assets\\images\\website-images\\dd47f632-efe6-4086-b411-2b699cd84a5c5_5960.webp",
+      "PackagePath": "staticwebassets\\assets\\images\\website-images\\dd47f632-efe6-4086-b411-2b699cd84a5c5_5960.webp"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\assets\\images\\website-images\\ec616870-c0bf-498e-a7a2-d819f623f11dMV5BODE1MmFlODktNmVjNS00ODVkLWE5ZjMtYjljY2FkZDQwYTJjXkEyXkFqcGdeQXVyOTQ2MjQ3MTI@._V1_.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\website-images\\ec616870-c0bf-498e-a7a2-d819f623f11dMV5BODE1MmFlODktNmVjNS00ODVkLWE5ZjMtYjljY2FkZDQwYTJjXkEyXkFqcGdeQXVyOTQ2MjQ3MTI@._V1_.jpg"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\assets\\images\\website-images\\eca07ed3-8546-4d52-957a-cf74924cf928447983seyavsud.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\website-images\\eca07ed3-8546-4d52-957a-cf74924cf928447983seyavsud.jpg"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\assets\\images\\website-images\\eee9b7ba-5b96-4f2e-85a8-e18d488bf3a1pexels-pixabay-358457.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\website-images\\eee9b7ba-5b96-4f2e-85a8-e18d488bf3a1pexels-pixabay-358457.jpg"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\assets\\images\\website-images\\f41ba235-ee2a-4170-842d-31578bf854eb1245341.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\website-images\\f41ba235-ee2a-4170-842d-31578bf854eb1245341.jpg"
     },
     {
       "Id": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\assets\\images\\website-images\\flower-10-570x633.jpg",
@@ -707,10 +887,6 @@
     {
       "Id": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\assets\\images\\website-images\\flower-19-570x633.jpg",
       "PackagePath": "staticwebassets\\assets\\images\\website-images\\flower-19-570x633.jpg"
-    },
-    {
-      "Id": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\assets\\images\\website-images\\flower-2-570x633.jpg",
-      "PackagePath": "staticwebassets\\assets\\images\\website-images\\flower-2-570x633.jpg"
     },
     {
       "Id": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\assets\\images\\website-images\\flower-20-570x633.jpg",
@@ -1355,26 +1531,6 @@
     {
       "Id": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\manage\\vendors\\mdi\\fonts\\materialdesignicons-webfont.woff2",
       "PackagePath": "staticwebassets\\manage\\vendors\\mdi\\fonts\\materialdesignicons-webfont.woff2"
-    },
-    {
-      "Id": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\uploads\\slide\\0bc8deab-81cf-47da-8872-b894497cf70fflower-25-570x633.jpg",
-      "PackagePath": "staticwebassets\\uploads\\slide\\0bc8deab-81cf-47da-8872-b894497cf70fflower-25-570x633.jpg"
-    },
-    {
-      "Id": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\uploads\\slide\\54c3f369-a7eb-45ab-8fde-ad725457cb53flower-27-570x633.jpg",
-      "PackagePath": "staticwebassets\\uploads\\slide\\54c3f369-a7eb-45ab-8fde-ad725457cb53flower-27-570x633.jpg"
-    },
-    {
-      "Id": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\uploads\\slide\\da39eaf5-dad7-4a96-9a3d-8266b2ea92a0flower-9-570x633.jpg",
-      "PackagePath": "staticwebassets\\uploads\\slide\\da39eaf5-dad7-4a96-9a3d-8266b2ea92a0flower-9-570x633.jpg"
-    },
-    {
-      "Id": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\uploads\\slide\\flower-18-570x633.jpg",
-      "PackagePath": "staticwebassets\\uploads\\slide\\flower-18-570x633.jpg"
-    },
-    {
-      "Id": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\uploads\\slide\\flower-30-570x633.jpg",
-      "PackagePath": "staticwebassets\\uploads\\slide\\flower-30-570x633.jpg"
     },
     {
       "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.FrontToBack.Microsoft.AspNetCore.StaticWebAssets.props",

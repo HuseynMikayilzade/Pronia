@@ -154,13 +154,13 @@ namespace FrontToBack.Areas.Manage.Controllers
             ProductImage mainphoto = new ProductImage
             {
                 IsPrimary=true,
-                Url = await createVm.MainPhoto.CreateFileAsync(_env.WebRootPath,"assets", "images", "website-images")
+                Url = await createVm.MainPhoto.CreateFileAsync(_env.WebRootPath,"assets","images","website-images")
             };
             //==============================HoverPhoto=================================//
             ProductImage hoverphoto = new ProductImage
             {
                 IsPrimary =false,
-                Url = await createVm.HoverPhoto.CreateFileAsync(_env.WebRootPath, "assets", "images", "website-images")
+                Url = await createVm.HoverPhoto.CreateFileAsync(_env.WebRootPath,"assets","images","website-images")
             };
 
             Product product = new Product
@@ -195,10 +195,10 @@ namespace FrontToBack.Areas.Manage.Controllers
                 product.ProductImages.Add(new ProductImage
                 {
                     IsPrimary = null,
-                    Url =await item.CreateFileAsync(_env.WebRootPath, "assets", "images", "website-images")
+                    Url =await item.CreateFileAsync(_env.WebRootPath,"assets","images","website-images")
 
                 });
-               
+                
             }
 
             //==============================Tags=================================//
@@ -247,6 +247,7 @@ namespace FrontToBack.Areas.Manage.Controllers
                 .Include(p=>p.ProductTags)
                 .Include(p=>p.ProductColors)
                 .Include(p=>p.ProductSizes)
+                .Include(p=>p.ProductImages)
                 .FirstOrDefaultAsync(p=>p.Id==id);
             if (product == null) return NotFound();
             UpdateProductVm updateProductVm = new UpdateProductVm
@@ -257,6 +258,7 @@ namespace FrontToBack.Areas.Manage.Controllers
                 SKU = product.SKU,
                 Description = product.Description,
                 CategoryId =product.Id,
+                ProductImages=product.ProductImages,
                 Categories = await _context.Categories.ToListAsync(),  
 
                 TagIds = product.ProductTags.Select(pt=>pt.TagId).ToList(),
@@ -273,23 +275,80 @@ namespace FrontToBack.Areas.Manage.Controllers
         [HttpPost]
         public async Task<IActionResult> Update(int id,UpdateProductVm updateProductVm)
         {
-            if(!ModelState.IsValid)
-            {
-                updateProductVm.Categories = await _context.Categories.ToListAsync();
-                return View(updateProductVm);
-            }
-
             Product exist = await _context.Products
                 .Include(p=>p.ProductTags)
                 .Include(p=>p.ProductColors)
                 .Include(p=>p.ProductSizes)
+                .Include(p => p.ProductImages)
                 .FirstOrDefaultAsync(p => p.Id == id);
+
+            if(!ModelState.IsValid)
+            {
+                updateProductVm.Categories = await _context.Categories.ToListAsync();
+                updateProductVm.Tags = await _context.Tags.ToListAsync();
+                updateProductVm.Colors = await _context.Colors.ToListAsync();
+                updateProductVm.Sizes = await _context.Sizes.ToListAsync();
+                updateProductVm.ProductImages = exist.ProductImages;
+                return View(updateProductVm);
+            }
+
             if (exist == null) return NotFound();
+
+            if (updateProductVm.ProductImages is not null)
+            {
+                if (!updateProductVm.MainPhoto.CheckType("image/"))
+                {
+                    updateProductVm.Categories = await _context.Categories.ToListAsync();
+                    updateProductVm.Tags = await _context.Tags.ToListAsync();
+                    updateProductVm.Colors = await _context.Colors.ToListAsync();
+                    updateProductVm.Sizes = await _context.Sizes.ToListAsync();
+                    updateProductVm.ProductImages = exist.ProductImages;
+                    ModelState.AddModelError("MainPhoto", "The file type incorrect");
+                    return View(updateProductVm);
+                }
+                if (updateProductVm.MainPhoto.CheckSize(3))
+                {
+                    updateProductVm.Categories = await _context.Categories.ToListAsync();
+                    updateProductVm.Tags = await _context.Tags.ToListAsync();
+                    updateProductVm.Colors = await _context.Colors.ToListAsync();
+                    updateProductVm.Sizes = await _context.Sizes.ToListAsync();
+                    updateProductVm.ProductImages = exist.ProductImages;
+                    ModelState.AddModelError("MainPhoto", "The file size incorrect");
+                    return View(updateProductVm);
+                }               
+            }
+            if (updateProductVm.ProductImages is not null)
+            {
+                if (!updateProductVm.HoverPhoto.CheckType("image/"))
+                {
+                    updateProductVm.Categories = await _context.Categories.ToListAsync();
+                    updateProductVm.Tags = await _context.Tags.ToListAsync();
+                    updateProductVm.Colors = await _context.Colors.ToListAsync();
+                    updateProductVm.Sizes = await _context.Sizes.ToListAsync();
+                    updateProductVm.ProductImages = exist.ProductImages;
+                    ModelState.AddModelError("HoverPhoto", "The file type incorrect");
+                    return View(updateProductVm);
+                }
+                if (updateProductVm.HoverPhoto.CheckSize(3))
+                {
+                    updateProductVm.Categories = await _context.Categories.ToListAsync();
+                    updateProductVm.Tags = await _context.Tags.ToListAsync();
+                    updateProductVm.Colors = await _context.Colors.ToListAsync();
+                    updateProductVm.Sizes = await _context.Sizes.ToListAsync();
+                    updateProductVm.ProductImages = exist.ProductImages;
+                    ModelState.AddModelError("HoverPhoto", "The file size incorrect");
+                    return View(updateProductVm);
+                }
+            }
 
             bool result = await _context.Products.AnyAsync(p => p.Id == id);
             if (!result)
             {
                 updateProductVm.Categories = await _context.Categories.ToListAsync();
+                updateProductVm.Tags = await _context.Tags.ToListAsync();
+                updateProductVm.Colors = await _context.Colors.ToListAsync();
+                updateProductVm.Sizes = await _context.Sizes.ToListAsync();
+                updateProductVm.ProductImages = exist.ProductImages;
                 ModelState.AddModelError("CategoryId", "Bele bir id-li product yoxdur");
                 return View(updateProductVm);
             }
@@ -297,9 +356,11 @@ namespace FrontToBack.Areas.Manage.Controllers
             {
                 if (! await _context.Tags.AnyAsync(t=>t.Id==item))
                 {
+                    updateProductVm.Categories = await _context.Categories.ToListAsync();
                     updateProductVm.Tags = await _context.Tags.ToListAsync();
                     updateProductVm.Colors = await _context.Colors.ToListAsync();
                     updateProductVm.Sizes = await _context.Sizes.ToListAsync();
+                    updateProductVm.ProductImages = exist.ProductImages;
                     ModelState.AddModelError("TagIds", "bu idli tag yoxdur");
                     return View(updateProductVm);
                 }
@@ -308,9 +369,11 @@ namespace FrontToBack.Areas.Manage.Controllers
             {
                 if (!await _context.Sizes.AnyAsync(t => t.Id == item))
                 {
+                    updateProductVm.Categories = await _context.Categories.ToListAsync();
                     updateProductVm.Tags = await _context.Tags.ToListAsync();
                     updateProductVm.Colors = await _context.Colors.ToListAsync();
                     updateProductVm.Sizes = await _context.Sizes.ToListAsync();
+                    updateProductVm.ProductImages = exist.ProductImages;
                     ModelState.AddModelError("SizeIds", "bu idli size yoxdur");
                     return View(updateProductVm);
                 }
@@ -319,14 +382,15 @@ namespace FrontToBack.Areas.Manage.Controllers
             {
                 if (!await _context.Colors.AnyAsync(t => t.Id == item))
                 {
+                    updateProductVm.Categories = await _context.Categories.ToListAsync();
                     updateProductVm.Tags = await _context.Tags.ToListAsync();
                     updateProductVm.Colors = await _context.Colors.ToListAsync();
                     updateProductVm.Sizes = await _context.Sizes.ToListAsync();
+                    updateProductVm.ProductImages = exist.ProductImages;
                     ModelState.AddModelError("ColorIds", "bu idli color yoxdur");
                     return View(updateProductVm);
                 }
             }
-
 
             //==============================Size=================================//
 
@@ -356,7 +420,6 @@ namespace FrontToBack.Areas.Manage.Controllers
                 }
             }
 
-
             //==============================Tags=================================//
 
             if (updateProductVm.TagIds is not null)
@@ -369,35 +432,90 @@ namespace FrontToBack.Areas.Manage.Controllers
                         exist.ProductTags.Add(new ProductTag {  TagId = tagId });
                     }
                 }
-
             }
-           
 
+
+            //==============================Update Main and Hover Photos=================================//
+
+            if (updateProductVm.MainPhoto is not null)
+            {
+                string fileName = await updateProductVm.MainPhoto.CreateFileAsync(_env.WebRootPath,"assets","images","website-images");
+                ProductImage mainexistimg = exist.ProductImages.FirstOrDefault(pt => pt.IsPrimary == true);
+                mainexistimg.Url.DeleteFile(_env.WebRootPath,"assets","images","website-images");
+                exist.ProductImages.Remove(mainexistimg);
+
+                exist.ProductImages.Add(new ProductImage { IsPrimary = true, Url = fileName });
+             
+            }
+
+            if(updateProductVm.HoverPhoto is not null)
+            {
+                string fileName = await updateProductVm.HoverPhoto.CreateFileAsync(_env.WebRootPath,"assets","images","website-images");
+                ProductImage hoverexistimg =exist.ProductImages.FirstOrDefault(pi=> pi.IsPrimary == false);
+                hoverexistimg.Url.DeleteFile(_env.WebRootPath,"assets","images","website-images");
+                exist.ProductImages.Remove(hoverexistimg);
+
+                exist.ProductImages.Add(new ProductImage { IsPrimary=false, Url= fileName });
+            }
+
+            if (updateProductVm.ImageIds is null)
+            {
+                updateProductVm.ImageIds = new List<int>();
+            }
+            List<ProductImage> removableimg = exist.ProductImages.Where(pi=>!updateProductVm.ImageIds.Exists(ii=>ii==pi.Id)&&pi.IsPrimary==null).ToList();
+            foreach (var item in removableimg)
+            {
+                item.Url.DeleteFile(_env.WebRootPath,"assets","images","website-images");
+                exist.ProductImages.Remove(item);
+            }
+          
+                TempData["Message"] = "";
+                foreach (var item in updateProductVm.AdditionalPhotos ?? new List<IFormFile>()) //exception vermesin
+                {
+                    if (!item.CheckType("image/"))
+                    {
+                        TempData["Message"] += $"<div class=\"alert alert-danger\" role=\"alert\">{item.FileName} The file type is incorrect</div>";
+                        continue;
+                    }
+                    if (item.CheckSize(2))
+                    {
+                        TempData["Message"] += $"<div class=\"alert alert-danger\" role=\"alert\">{item.FileName} The file size is incorrect</div>";
+                        continue;
+                    }
+                    exist.ProductImages.Add(new ProductImage
+                    {
+                        IsPrimary = null,
+                        Url = await item.CreateFileAsync(_env.WebRootPath, "assets", "images", "website-images")
+
+                    });
+                }
 
             exist.SKU=updateProductVm.SKU;
             exist.Description=updateProductVm.Description;
             exist.Price=updateProductVm.Price;
             exist.Order=updateProductVm.Order;
             exist.Name=updateProductVm.Name;
+            exist.ProductImages=updateProductVm.ProductImages;
             exist.CategoryId =updateProductVm.CategoryId;
 
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
-
         }
-
         public async Task<IActionResult> Delete(int id)
         {
             if (id <= 0) return BadRequest();
             Product product = await _context.Products.FirstOrDefaultAsync(p => p.Id == id);
             if (product == null) return NotFound();
 
+            foreach (var item in product.ProductImages ?? new List<ProductImage>())
+            {
+                item.Url.DeleteFile(_env.WebRootPath,"assets","images","website-images");
+            }
             _context.Products.Remove(product);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
             
         }
-
         public async Task<IActionResult> Detail(int id)
         {
            Product product = await _context.Products

@@ -6,6 +6,38 @@
 
         <form class="forms-sample" method="post" enctype="multipart/form-data" asp-action="update">
             <div class="form-group">
+                <img style="width:150px;heigth:150px" src="~/assets/images/website-images/@Model.ProductImages.FirstOrDefault(pi=>pi.IsPrimary==true)?.Url" />
+            </div>
+            <div class="form-group">
+                <label asp-for="MainPhoto"></label>
+                <input asp-for="MainPhoto" class="form-control">
+                <span asp-validation-for="MainPhoto" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <img style="width:150px;heigth:150px" src="~/assets/images/website-images/@Model.ProductImages.FirstOrDefault(pi=>pi.IsPrimary==false)?.Url" />
+            </div>
+            <div class="form-group">
+                <label asp-for="HoverPhoto"></label>
+                <input asp-for="HoverPhoto" class="form-control">
+                <span asp-validation-for="HoverPhoto" class="text-danger"></span>
+            </div>
+                <div class="form-group d-flex">
+                @foreach (var item in Model.ProductImages.Where(pi=>pi.IsPrimary==null))
+                {
+                    <div class="position-relative">
+                        <img style="width:150px;heigth:150px" src="~/assets/images/website-images/@item.Url" />
+                        <input asp-for="ImageIds" type="hidden" value="@item.Id" >
+                        <button type="button" style="top:4px;left:4px" class="btn btn-danger position-absolute cust-remove">x</button>
+                    </div>                   
+                }
+            </div>
+            <div class="form-group">
+                <label asp-for="AdditionalPhotos"></label>
+                <input asp-for="AdditionalPhotos" class="form-control">
+                <span asp-validation-for="AdditionalPhotos" class="text-danger"></span>
+            </div>
+  
+            <div class="form-group">
                 <label asp-for="Name"></label>
                 <input asp-for="Name" class="form-control" placeholder="Name">
                 <span asp-validation-for="Name" class="text-danger"></span>
@@ -66,3 +98,15 @@
         </form>
     </div>
 </div>
+
+@section deleteimg
+{
+    <script>
+        var btns = document.querySelectorAll(".cust-remove")
+        btns.forEach(b => {
+            b.addEventListener("click", function () {
+                b.parentElement.remove();
+            })
+        })
+    </script>
+}

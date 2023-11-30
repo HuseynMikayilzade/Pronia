@@ -235,4 +235,15 @@
     <Folder Include="Areas\Manage\ViewModels\Category\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Update="wwwroot\assets\images\website-images\flower-18-570x633.jpg">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\assets\images\website-images\flower-30-570x633.jpg">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
 </Project>

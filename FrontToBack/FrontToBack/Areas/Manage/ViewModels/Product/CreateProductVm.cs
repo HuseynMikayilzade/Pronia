@@ -26,10 +26,9 @@ namespace FrontToBack.Areas.Manage.ViewModels
         public List<Color>? Colors { get; set; }
         [Required]
         public int? CategoryId { get; set; }
-
-        public IFormFile MainPhoto { get; set; }
-        public IFormFile HoverPhoto { get; set; }
-        public List<IFormFile> AdditionalPhotos { get; set; }
+        public IFormFile? MainPhoto { get; set; }
+        public IFormFile? HoverPhoto { get; set; }
+        public List<IFormFile>? AdditionalPhotos { get; set; }
 
     }
 }
