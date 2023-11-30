@@ -294,7 +294,7 @@ namespace FrontToBack.Areas.Manage.Controllers
 
             if (exist == null) return NotFound();
 
-            if (updateProductVm.ProductImages is not null)
+            if (updateProductVm.MainPhoto is not null)
             {
                 if (!updateProductVm.MainPhoto.CheckType("image/"))
                 {
@@ -317,7 +317,7 @@ namespace FrontToBack.Areas.Manage.Controllers
                     return View(updateProductVm);
                 }               
             }
-            if (updateProductVm.ProductImages is not null)
+            if (updateProductVm.HoverPhoto is not null)
             {
                 if (!updateProductVm.HoverPhoto.CheckType("image/"))
                 {
@@ -495,7 +495,6 @@ namespace FrontToBack.Areas.Manage.Controllers
             exist.Price=updateProductVm.Price;
             exist.Order=updateProductVm.Order;
             exist.Name=updateProductVm.Name;
-            exist.ProductImages=updateProductVm.ProductImages;
             exist.CategoryId =updateProductVm.CategoryId;
 
             await _context.SaveChangesAsync();

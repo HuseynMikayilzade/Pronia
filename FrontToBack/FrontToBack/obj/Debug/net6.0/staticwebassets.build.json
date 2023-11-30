@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "yDaQBnbkBFW8zpobACKBdv7gpRF7X9omV98IaGtbn+E=",
+  "Hash": "ZzbYR3hoYZnnUYmpTOM8e9EyPaDZpH++79JxahEUCoE=",
   "Source": "FrontToBack",
   "BasePath": "_content/FrontToBack",
   "Mode": "Default",
@@ -2669,6 +2669,23 @@
       "OriginalItemSpec": "wwwroot\\assets\\images\\website-images\\2.png"
     },
     {
+      "Identity": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\assets\\images\\website-images\\2009e738-1152-4b63-8776-e3f94061d5dc83-836045_msn-boneco-logo-vector-msn-messenger-logo-png.png",
+      "SourceId": "FrontToBack",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\",
+      "BasePath": "_content/FrontToBack",
+      "RelativePath": "assets/images/website-images/2009e738-1152-4b63-8776-e3f94061d5dc83-836045_msn-boneco-logo-vector-msn-messenger-logo-png.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\images\\website-images\\2009e738-1152-4b63-8776-e3f94061d5dc83-836045_msn-boneco-logo-vector-msn-messenger-logo-png.png"
+    },
+    {
       "Identity": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\assets\\images\\website-images\\2-1-370x270.webp",
       "SourceId": "FrontToBack",
       "SourceType": "Discovered",
@@ -2924,6 +2941,23 @@
       "OriginalItemSpec": "wwwroot\\assets\\images\\website-images\\4226ec1a-0ba6-4a98-9436-024cc1d1c795447983seyavsud.jpg"
     },
     {
+      "Identity": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\assets\\images\\website-images\\47de669b-18ea-4c1f-9973-32c3d147e4419050.jpg",
+      "SourceId": "FrontToBack",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\",
+      "BasePath": "_content/FrontToBack",
+      "RelativePath": "assets/images/website-images/47de669b-18ea-4c1f-9973-32c3d147e4419050.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\images\\website-images\\47de669b-18ea-4c1f-9973-32c3d147e4419050.jpg"
+    },
+    {
       "Identity": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\assets\\images\\website-images\\480bf4f8-f6d0-4a82-927b-d8e701220aa4andrew-seaman-14HyRO75p24-unsplash.jpg",
       "SourceId": "FrontToBack",
       "SourceType": "Discovered",
@@ -2939,6 +2973,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\images\\website-images\\480bf4f8-f6d0-4a82-927b-d8e701220aa4andrew-seaman-14HyRO75p24-unsplash.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\assets\\images\\website-images\\48735a60-dfb2-4f5c-a811-c39e88b25d42800px-Skype_logo_(2019–present).svg.png",
+      "SourceId": "FrontToBack",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\",
+      "BasePath": "_content/FrontToBack",
+      "RelativePath": "assets/images/website-images/48735a60-dfb2-4f5c-a811-c39e88b25d42800px-Skype_logo_(2019–present).svg.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\images\\website-images\\48735a60-dfb2-4f5c-a811-c39e88b25d42800px-Skype_logo_(2019–present).svg.png"
     },
     {
       "Identity": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\assets\\images\\website-images\\4a356368-e0b9-481a-b895-d5a61430f618pexels-nout-gons-378570.jpg",
@@ -3058,6 +3109,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\images\\website-images\\60220fa0-1aab-4cc3-8815-62277a4b0524290417527_333655288969324_8020618734108173461_n.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\assets\\images\\website-images\\62ba648a-c0d9-417c-ad79-dcfad1e13099360_F_311487801_tg25oIsZHTgAyx1cvTcic8ZhNtdYuBoe.jpg",
+      "SourceId": "FrontToBack",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\",
+      "BasePath": "_content/FrontToBack",
+      "RelativePath": "assets/images/website-images/62ba648a-c0d9-417c-ad79-dcfad1e13099360_F_311487801_tg25oIsZHTgAyx1cvTcic8ZhNtdYuBoe.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\images\\website-images\\62ba648a-c0d9-417c-ad79-dcfad1e13099360_F_311487801_tg25oIsZHTgAyx1cvTcic8ZhNtdYuBoe.jpg"
     },
     {
       "Identity": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\assets\\images\\website-images\\71307bdd-2d0b-46ae-b942-4cbd365191f5toyuqcorek.png",
@@ -3451,6 +3519,23 @@
       "OriginalItemSpec": "wwwroot\\assets\\images\\website-images\\d943e3d8-a6ad-463b-b6c2-a4d30ee61807flower-28-570x633.jpg"
     },
     {
+      "Identity": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\assets\\images\\website-images\\d9505a3c-875e-444d-8e4d-aed17730821440383204-social-media-background (1).webp",
+      "SourceId": "FrontToBack",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\",
+      "BasePath": "_content/FrontToBack",
+      "RelativePath": "assets/images/website-images/d9505a3c-875e-444d-8e4d-aed17730821440383204-social-media-background (1).webp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\images\\website-images\\d9505a3c-875e-444d-8e4d-aed17730821440383204-social-media-background (1).webp"
+    },
+    {
       "Identity": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\assets\\images\\website-images\\da39eaf5-dad7-4a96-9a3d-8266b2ea92a0flower-9-570x633.jpg",
       "SourceId": "FrontToBack",
       "SourceType": "Discovered",
@@ -3553,6 +3638,23 @@
       "OriginalItemSpec": "wwwroot\\assets\\images\\website-images\\dd47f632-efe6-4086-b411-2b699cd84a5c5_5960.webp"
     },
     {
+      "Identity": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\assets\\images\\website-images\\e556d49b-4d0d-4401-8753-38c3d62db0e442d0f32a6b76790e8d6f1ad6fcd30dbe_400x400.png",
+      "SourceId": "FrontToBack",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\",
+      "BasePath": "_content/FrontToBack",
+      "RelativePath": "assets/images/website-images/e556d49b-4d0d-4401-8753-38c3d62db0e442d0f32a6b76790e8d6f1ad6fcd30dbe_400x400.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\images\\website-images\\e556d49b-4d0d-4401-8753-38c3d62db0e442d0f32a6b76790e8d6f1ad6fcd30dbe_400x400.png"
+    },
+    {
       "Identity": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\assets\\images\\website-images\\ec616870-c0bf-498e-a7a2-d819f623f11dMV5BODE1MmFlODktNmVjNS00ODVkLWE5ZjMtYjljY2FkZDQwYTJjXkEyXkFqcGdeQXVyOTQ2MjQ3MTI@._V1_.jpg",
       "SourceId": "FrontToBack",
       "SourceType": "Discovered",
@@ -3619,6 +3721,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\images\\website-images\\f41ba235-ee2a-4170-842d-31578bf854eb1245341.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\assets\\images\\website-images\\f8d4af49-55f7-47ce-924d-c9daee109a59345-low-res.webp",
+      "SourceId": "FrontToBack",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\",
+      "BasePath": "_content/FrontToBack",
+      "RelativePath": "assets/images/website-images/f8d4af49-55f7-47ce-924d-c9daee109a59345-low-res.webp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\images\\website-images\\f8d4af49-55f7-47ce-924d-c9daee109a59345-low-res.webp"
     },
     {
       "Identity": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\assets\\images\\website-images\\flower-10-570x633.jpg",
