@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "ZzbYR3hoYZnnUYmpTOM8e9EyPaDZpH++79JxahEUCoE=",
+  "Hash": "baSefeGXidXZeZ2IusComR5bQdiyyKTcOE4C3CRdpc4=",
   "Source": "FrontToBack",
   "BasePath": "_content/FrontToBack",
   "Mode": "Default",
@@ -2465,6 +2465,23 @@
       "OriginalItemSpec": "wwwroot\\assets\\images\\website-images\\1-3-570x633.jpg"
     },
     {
+      "Identity": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\assets\\images\\website-images\\13656408-0c31-483a-ad95-8dea0ea0a41e83-836045_msn-boneco-logo-vector-msn-messenger-logo-png.png",
+      "SourceId": "FrontToBack",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\",
+      "BasePath": "_content/FrontToBack",
+      "RelativePath": "assets/images/website-images/13656408-0c31-483a-ad95-8dea0ea0a41e83-836045_msn-boneco-logo-vector-msn-messenger-logo-png.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\images\\website-images\\13656408-0c31-483a-ad95-8dea0ea0a41e83-836045_msn-boneco-logo-vector-msn-messenger-logo-png.png"
+    },
+    {
       "Identity": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\assets\\images\\website-images\\1-4.png",
       "SourceId": "FrontToBack",
       "SourceType": "Discovered",
@@ -2667,23 +2684,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\images\\website-images\\2.png"
-    },
-    {
-      "Identity": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\assets\\images\\website-images\\2009e738-1152-4b63-8776-e3f94061d5dc83-836045_msn-boneco-logo-vector-msn-messenger-logo-png.png",
-      "SourceId": "FrontToBack",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\",
-      "BasePath": "_content/FrontToBack",
-      "RelativePath": "assets/images/website-images/2009e738-1152-4b63-8776-e3f94061d5dc83-836045_msn-boneco-logo-vector-msn-messenger-logo-png.png",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\assets\\images\\website-images\\2009e738-1152-4b63-8776-e3f94061d5dc83-836045_msn-boneco-logo-vector-msn-messenger-logo-png.png"
     },
     {
       "Identity": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\assets\\images\\website-images\\2-1-370x270.webp",
@@ -2922,6 +2922,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\images\\website-images\\390ba8d1-1b7a-483a-a82e-f64b98b3f28f618cd5e14e3fe00eb020890b.webp"
+    },
+    {
+      "Identity": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\assets\\images\\website-images\\3dc4b4f2-f18e-4eea-9f3e-da3f266c941042d0f32a6b76790e8d6f1ad6fcd30dbe_400x400.png",
+      "SourceId": "FrontToBack",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\",
+      "BasePath": "_content/FrontToBack",
+      "RelativePath": "assets/images/website-images/3dc4b4f2-f18e-4eea-9f3e-da3f266c941042d0f32a6b76790e8d6f1ad6fcd30dbe_400x400.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\images\\website-images\\3dc4b4f2-f18e-4eea-9f3e-da3f266c941042d0f32a6b76790e8d6f1ad6fcd30dbe_400x400.png"
     },
     {
       "Identity": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\assets\\images\\website-images\\4226ec1a-0ba6-4a98-9436-024cc1d1c795447983seyavsud.jpg",
@@ -3417,6 +3434,40 @@
       "OriginalItemSpec": "wwwroot\\assets\\images\\website-images\\cf5b3606-1c19-4af7-95c3-24752b6039b3800px-Skype_logo_(2019–present).svg.png"
     },
     {
+      "Identity": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\assets\\images\\website-images\\cfc4b251-ec55-4ea0-9062-171044a956351200px-Skype_logo.svg.png",
+      "SourceId": "FrontToBack",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\",
+      "BasePath": "_content/FrontToBack",
+      "RelativePath": "assets/images/website-images/cfc4b251-ec55-4ea0-9062-171044a956351200px-Skype_logo.svg.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\images\\website-images\\cfc4b251-ec55-4ea0-9062-171044a956351200px-Skype_logo.svg.png"
+    },
+    {
+      "Identity": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\assets\\images\\website-images\\d2237f42-063e-4c96-a66c-3dabc10d2dca345-low-res.webp",
+      "SourceId": "FrontToBack",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\",
+      "BasePath": "_content/FrontToBack",
+      "RelativePath": "assets/images/website-images/d2237f42-063e-4c96-a66c-3dabc10d2dca345-low-res.webp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\images\\website-images\\d2237f42-063e-4c96-a66c-3dabc10d2dca345-low-res.webp"
+    },
+    {
       "Identity": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\assets\\images\\website-images\\d223ac13-481f-4601-82f9-80fa2b7e232083-836045_msn-boneco-logo-vector-msn-messenger-logo-png.png",
       "SourceId": "FrontToBack",
       "SourceType": "Discovered",
@@ -3517,23 +3568,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\images\\website-images\\d943e3d8-a6ad-463b-b6c2-a4d30ee61807flower-28-570x633.jpg"
-    },
-    {
-      "Identity": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\assets\\images\\website-images\\d9505a3c-875e-444d-8e4d-aed17730821440383204-social-media-background (1).webp",
-      "SourceId": "FrontToBack",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\",
-      "BasePath": "_content/FrontToBack",
-      "RelativePath": "assets/images/website-images/d9505a3c-875e-444d-8e4d-aed17730821440383204-social-media-background (1).webp",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\assets\\images\\website-images\\d9505a3c-875e-444d-8e4d-aed17730821440383204-social-media-background (1).webp"
     },
     {
       "Identity": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\assets\\images\\website-images\\da39eaf5-dad7-4a96-9a3d-8266b2ea92a0flower-9-570x633.jpg",

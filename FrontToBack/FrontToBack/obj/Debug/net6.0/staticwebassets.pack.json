@@ -617,6 +617,10 @@
       "PackagePath": "staticwebassets\\assets\\images\\website-images\\117a56f6-ac79-4dc3-b6bd-38cca95d5eee2741689_620x410.jpg"
     },
     {
+      "Id": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\assets\\images\\website-images\\13656408-0c31-483a-ad95-8dea0ea0a41e83-836045_msn-boneco-logo-vector-msn-messenger-logo-png.png",
+      "PackagePath": "staticwebassets\\assets\\images\\website-images\\13656408-0c31-483a-ad95-8dea0ea0a41e83-836045_msn-boneco-logo-vector-msn-messenger-logo-png.png"
+    },
+    {
       "Id": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\assets\\images\\website-images\\1e48bc30-e6d8-4d4d-8592-fdbd3bcd6f1cflower-23-570x633.jpg",
       "PackagePath": "staticwebassets\\assets\\images\\website-images\\1e48bc30-e6d8-4d4d-8592-fdbd3bcd6f1cflower-23-570x633.jpg"
     },
@@ -643,10 +647,6 @@
     {
       "Id": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\assets\\images\\website-images\\2.png",
       "PackagePath": "staticwebassets\\assets\\images\\website-images\\2.png"
-    },
-    {
-      "Id": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\assets\\images\\website-images\\2009e738-1152-4b63-8776-e3f94061d5dc83-836045_msn-boneco-logo-vector-msn-messenger-logo-png.png",
-      "PackagePath": "staticwebassets\\assets\\images\\website-images\\2009e738-1152-4b63-8776-e3f94061d5dc83-836045_msn-boneco-logo-vector-msn-messenger-logo-png.png"
     },
     {
       "Id": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\assets\\images\\website-images\\2159a7a5-c6fe-4b09-b40f-d1e7235eab28Kamal_Sunal.jpg",
@@ -683,6 +683,10 @@
     {
       "Id": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\assets\\images\\website-images\\390ba8d1-1b7a-483a-a82e-f64b98b3f28f618cd5e14e3fe00eb020890b.webp",
       "PackagePath": "staticwebassets\\assets\\images\\website-images\\390ba8d1-1b7a-483a-a82e-f64b98b3f28f618cd5e14e3fe00eb020890b.webp"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\assets\\images\\website-images\\3dc4b4f2-f18e-4eea-9f3e-da3f266c941042d0f32a6b76790e8d6f1ad6fcd30dbe_400x400.png",
+      "PackagePath": "staticwebassets\\assets\\images\\website-images\\3dc4b4f2-f18e-4eea-9f3e-da3f266c941042d0f32a6b76790e8d6f1ad6fcd30dbe_400x400.png"
     },
     {
       "Id": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\assets\\images\\website-images\\4226ec1a-0ba6-4a98-9436-024cc1d1c795447983seyavsud.jpg",
@@ -801,6 +805,14 @@
       "PackagePath": "staticwebassets\\assets\\images\\website-images\\cf5b3606-1c19-4af7-95c3-24752b6039b3800px-Skype_logo_(2019–present).svg.png"
     },
     {
+      "Id": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\assets\\images\\website-images\\cfc4b251-ec55-4ea0-9062-171044a956351200px-Skype_logo.svg.png",
+      "PackagePath": "staticwebassets\\assets\\images\\website-images\\cfc4b251-ec55-4ea0-9062-171044a956351200px-Skype_logo.svg.png"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\assets\\images\\website-images\\d2237f42-063e-4c96-a66c-3dabc10d2dca345-low-res.webp",
+      "PackagePath": "staticwebassets\\assets\\images\\website-images\\d2237f42-063e-4c96-a66c-3dabc10d2dca345-low-res.webp"
+    },
+    {
       "Id": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\assets\\images\\website-images\\d223ac13-481f-4601-82f9-80fa2b7e232083-836045_msn-boneco-logo-vector-msn-messenger-logo-png.png",
       "PackagePath": "staticwebassets\\assets\\images\\website-images\\d223ac13-481f-4601-82f9-80fa2b7e232083-836045_msn-boneco-logo-vector-msn-messenger-logo-png.png"
     },
@@ -823,10 +835,6 @@
     {
       "Id": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\assets\\images\\website-images\\d943e3d8-a6ad-463b-b6c2-a4d30ee61807flower-28-570x633.jpg",
       "PackagePath": "staticwebassets\\assets\\images\\website-images\\d943e3d8-a6ad-463b-b6c2-a4d30ee61807flower-28-570x633.jpg"
-    },
-    {
-      "Id": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\assets\\images\\website-images\\d9505a3c-875e-444d-8e4d-aed17730821440383204-social-media-background (1).webp",
-      "PackagePath": "staticwebassets\\assets\\images\\website-images\\d9505a3c-875e-444d-8e4d-aed17730821440383204-social-media-background (1).webp"
     },
     {
       "Id": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\assets\\images\\website-images\\da39eaf5-dad7-4a96-9a3d-8266b2ea92a0flower-9-570x633.jpg",

@@ -13,7 +13,7 @@ namespace FrontToBack.Controllers
         {
              _context = context;
         }
-        public IActionResult Detail (int id)
+        public async Task<IActionResult> Detail (int id)
         {
 
             if (id <= 0) return BadRequest();
@@ -34,19 +34,25 @@ namespace FrontToBack.Controllers
             List<Product> relatedproducts = _context.Products
                 .Include(p=>p.Category)
                 .Include(p=>p.ProductImages)
+                .Include(p=>p.ProductTags)
+                .ThenInclude(pt=>pt.Tag)
                 .Where(p=>p.CategoryId == product.CategoryId && p.Id!=id).ToList();
 
 
             //======================= Services  ========================//
             List<CustomService> customService=_context.CustomServices.ToList();
-            
-            HomeVM homeVM = new HomeVM{
-                Product=product,
-                CustomServices=customService,
-                RelatedProducts=relatedproducts
+
+            DetailVm detailVm = new DetailVm
+            {
+                Product= product,
+                CustomServices= customService,
+                RelatedProducts=await _context.Products.Where(p=>p.CategoryId==product.CategoryId && p.Id!=id)
+                .Take(8)
+                .Include(p=>p.ProductImages.Where(pi=>pi.IsPrimary!=null)).ToListAsync()
             };
+
             
-            return View(homeVM); 
+            return View(detailVm); 
         }
     }
 }

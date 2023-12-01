@@ -1,4 +1,6 @@
 using FrontToBack.DAL;
+using FrontToBack.Models;
+using FrontToBack.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 
@@ -10,11 +12,12 @@ namespace FrontToBack
         {
             var builder = WebApplication.CreateBuilder(args);
             builder.Services.AddControllersWithViews();
+            builder.Services.AddScoped<LayoutService>();
+
             builder.Services.AddDbContext<AppDbContext>(
                 opt=>opt.UseSqlServer(builder.Configuration.GetConnectionString("MsSql"))
                 );
             var app = builder.Build();
-
             app.UseStaticFiles();
             app.UseRouting();
 
