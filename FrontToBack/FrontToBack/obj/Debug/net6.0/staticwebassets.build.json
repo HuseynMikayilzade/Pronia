@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "baSefeGXidXZeZ2IusComR5bQdiyyKTcOE4C3CRdpc4=",
+  "Hash": "ehJl2Jx4g8mIWV4ZdSunirG0hUbXidgOXZu4umBN+ss=",
   "Source": "FrontToBack",
   "BasePath": "_content/FrontToBack",
   "Mode": "Default",
@@ -1921,6 +1921,23 @@
       "OriginalItemSpec": "wwwroot\\assets\\images\\website-images\\03cb1179-f177-4cd7-8e36-c2cf4572ab12360_F_311487801_tg25oIsZHTgAyx1cvTcic8ZhNtdYuBoe.jpg"
     },
     {
+      "Identity": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\assets\\images\\website-images\\07ea69bd-6151-459f-aca9-e787e96868cfFlower-1-570x633.jpg",
+      "SourceId": "FrontToBack",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\",
+      "BasePath": "_content/FrontToBack",
+      "RelativePath": "assets/images/website-images/07ea69bd-6151-459f-aca9-e787e96868cfFlower-1-570x633.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\images\\website-images\\07ea69bd-6151-459f-aca9-e787e96868cfFlower-1-570x633.jpg"
+    },
+    {
       "Identity": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\assets\\images\\website-images\\1.png",
       "SourceId": "FrontToBack",
       "SourceType": "Discovered",
@@ -3551,6 +3568,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\images\\website-images\\d87c2acd-79c7-4e14-84cb-1f2f0fd64f5cpexels-nout-gons-378570.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\assets\\images\\website-images\\d8855963-2b5b-4249-b0a9-48947d0eeeb8Flower-2-570x633.jpg",
+      "SourceId": "FrontToBack",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\",
+      "BasePath": "_content/FrontToBack",
+      "RelativePath": "assets/images/website-images/d8855963-2b5b-4249-b0a9-48947d0eeeb8Flower-2-570x633.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\images\\website-images\\d8855963-2b5b-4249-b0a9-48947d0eeeb8Flower-2-570x633.jpg"
     },
     {
       "Identity": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\assets\\images\\website-images\\d943e3d8-a6ad-463b-b6c2-a4d30ee61807flower-28-570x633.jpg",

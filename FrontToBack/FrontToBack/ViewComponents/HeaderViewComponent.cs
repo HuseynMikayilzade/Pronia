@@ -27,7 +27,6 @@ namespace FrontToBack.ViewComponents
                 List<BasketCookieItemVm> cookies = JsonConvert.DeserializeObject<List<BasketCookieItemVm>>(Request.Cookies["Basket"]);
                 if (cookies != null)
                 {
-
                     foreach (var item in cookies)
                     {
                         Product product = await _context.Products.Include(p => p.ProductImages.Where(pi => pi.IsPrimary == true)).FirstOrDefaultAsync(p => p.Id == item.Id);
@@ -44,10 +43,8 @@ namespace FrontToBack.ViewComponents
                             };
                             itemvm.Add(basketItemVm);
                         }
-
                     }
                 }
-
             }
             HeaderBasketVm headerBasketVm = new HeaderBasketVm
             {

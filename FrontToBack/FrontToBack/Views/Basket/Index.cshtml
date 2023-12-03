@@ -70,18 +70,20 @@
                                             <span class="amount">$@item.Price</span>
                                         </td>
                                         <td class="quantity">
-                                            <div class="cart-plus-minus">
-                                                <input class="cart-plus-minus-box"
-                                                       value="@item.Count"
-                                                       type="text" />
-                                                <div class="dec qtybutton">
-                                                    <i class="fa fa-minus"></i>
+                                                <div class="btn-group" role="group">
+                                                    <a type="button" class="btn btn-outline-success" asp-action="minusbasket" asp-controller="basket" asp-route-id="@item.Id">
+                                                        <i class="fa fa-minus"></i>
+                                                    </a>
+                                                    <button type="button" class="btn btn-outline-success" disabled>
+                                                        @item.Count
+                                                    </button>
+                                                    <a type="button" class="btn btn-outline-success" asp-action="plusbasket" asp-controller="basket" asp-route-id="@item.Id" >
+                                                        <i class="fa fa-plus"></i>
+                                                    </a>
                                                 </div>
-                                                <div class="inc qtybutton">
-                                                    <i class="fa fa-plus"></i>
-                                                </div>
-                                            </div>
                                         </td>
+
+                                           
                                         <td class="product-subtotal">
                                             <span class="amount">$@(item.Price*item.Count)</span>
                                         </td>

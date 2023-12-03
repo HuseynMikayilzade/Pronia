@@ -788,7 +788,7 @@
                                    data-tippy-arrow="true"
                                    data-tippy-theme="sharpborder"></i>
                             </a>
-                            <a href="single-product-variable.html"
+                            <a asp-controller="product" asp-action="detail" asp-route-id="@item.Id"
                                class="product-item_img">
                                 <img style="width:100px;height:100px" class="img-full"
                                      src="~/assets/images/website-images/@item.image"
@@ -796,7 +796,7 @@
                             </a>
                             <div class="product-item_content">
                                 <a class="product-item_title"
-                                   href="single-product-variable.html">@item.Name</a>
+                                   asp-controller="product" asp-action="detail" asp-route-id="@item.Id">@item.Name</a>
                                 <span class="product-item_quantity">@item.Count x $@item.Price</span>
                             </div>
                         </li>
