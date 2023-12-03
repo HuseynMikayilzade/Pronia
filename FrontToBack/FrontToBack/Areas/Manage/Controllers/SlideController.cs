@@ -22,7 +22,7 @@ namespace FrontToBack.Areas.Manage.Controllers
 
         public async Task<IActionResult> Index()
         {
-            List<Slide> slides = await _context.Slides.ToListAsync();
+            List<Slide> slides = await _context.Slides.Include(s=>s.Image).ToListAsync();
             return View(slides);
         }
 
@@ -105,7 +105,7 @@ namespace FrontToBack.Areas.Manage.Controllers
             if (id == null) return NotFound();
 
 
-            Slide existed = await _context.Slides.FirstOrDefaultAsync(s => s.Id == id);
+            Slide existed = await _context.Slides.Include(s=>s.Image).FirstOrDefaultAsync(s => s.Id == id);
 
             if (existed == null) return NotFound();
 

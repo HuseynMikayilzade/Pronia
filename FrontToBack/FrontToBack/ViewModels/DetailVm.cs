@@ -7,6 +7,7 @@ namespace FrontToBack.ViewModels
         public Product Product { get; set; }
         public List<Product> RelatedProducts { get; set; }
         public List<CustomService> CustomServices { get; set; }
+        public List<Product> Products { get; set; }
 
     }
 }
