@@ -71,10 +71,18 @@
                                     <input asp-for=Confirmpassword type="password" placeholder="Confirm Password" />
                                     <span class="text-danger" asp-validation-for="Confirmpassword"></span>
                                 </div>
-                                <div class="col-12">
+                                <div class="col-6">
                                     <button class="btn btn-custom-size lg-size btn-pronia-primary" type="submit">
                                         Register
                                     </button>
+                                </div>
+                                <div class="col-6">
+                                    <p>
+                                        Already have an account? <a asp-action="Login" asp-controller="account" class="text-success">
+                                            Login
+                                        </a>
+                                    </p>
+                                    
                                 </div>
                             </div>
                         </div>

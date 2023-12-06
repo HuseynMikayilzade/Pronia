@@ -1,14 +1,15 @@
 ﻿using FrontToBack.Areas.Manage.ViewModels;
 using FrontToBack.DAL;
-using FrontToBack.Migrations;
 using FrontToBack.Models;
 using FrontToBack.Utilities.Extention;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace FrontToBack.Areas.Manage.Controllers
 {
     [Area("Manage")]
+    [Authorize]
     public class ProductController : Controller
     {
         private readonly AppDbContext _context;

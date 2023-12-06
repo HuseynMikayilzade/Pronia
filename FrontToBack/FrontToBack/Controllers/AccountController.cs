@@ -52,14 +52,13 @@ namespace FrontToBack.Controllers
 
 
             AppUser appUser = new AppUser
-            {
-                
+            { 
                 Name = Stringformat.Capitalize(registerVm.Name),
                 Surname = Stringformat.Capitalize(registerVm.Surname),
                 Email=registerVm.Email,
                 UserName=registerVm.Username,
                 Gender=registerVm.Gender
-                
+               
             };
 
             IdentityResult result = await _userManager.CreateAsync(appUser,registerVm.Password);
@@ -75,6 +74,44 @@ namespace FrontToBack.Controllers
             await _signInManager.SignInAsync(appUser, isPersistent: false);
             return RedirectToAction(nameof(Index),"Home");
         }
+
+        public IActionResult Login()
+        {
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> Login(LoginVm loginVm,string? returnurl)
+        {
+            if (!ModelState.IsValid) return View();
+            AppUser appUser = await _userManager.FindByNameAsync(loginVm.UsernameOrEmail);
+            if (appUser == null)
+            {
+                appUser = await _userManager.FindByEmailAsync(loginVm.UsernameOrEmail);
+                if (appUser == null)
+                {
+                    ModelState.AddModelError(String.Empty, "Email ,Username or password is incorrect");
+                    return View();
+                }
+            }
+            var result = await _signInManager.PasswordSignInAsync(appUser, loginVm.Password, loginVm.İsRemember ,true);
+            if (result.IsLockedOut)
+            {
+                ModelState.AddModelError(String.Empty, "Account is locked. Please try again after a few minutes.");
+                return View();
+            }
+            if(!result.Succeeded)
+            {
+                ModelState.AddModelError(String.Empty, "Email ,Username or password is incorrect");
+                return View();
+            }
+
+            if (returnurl == null)
+            {
+                return RedirectToAction(nameof(Index), "Home");
+            }
+            return Redirect(returnurl);
+        }
+
 
         public async Task<IActionResult> Logout()
         {

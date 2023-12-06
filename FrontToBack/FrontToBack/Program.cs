@@ -31,9 +31,9 @@ namespace FrontToBack
                 }).AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders();
             var app = builder.Build();
             app.UseAuthentication();
+            app.UseRouting();
             app.UseAuthorization();
             app.UseStaticFiles();
-            app.UseRouting();
 
             app.UseEndpoints(endpoints =>
             {
