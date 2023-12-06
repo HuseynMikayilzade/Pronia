@@ -1,4 +1,4 @@
-﻿namespace FrontToBack.Utilities.Extentions
+﻿namespace FrontToBack.Utilities.Enum
 {
     public enum Gender
     {

@@ -1,4 +1,4 @@
-﻿using FrontToBack.Utilities.Extentions;
+﻿using FrontToBack.Utilities.Enum;
 using System.ComponentModel.DataAnnotations;
 
 namespace FrontToBack.ViewModels

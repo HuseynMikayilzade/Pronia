@@ -6,6 +6,7 @@ using FrontToBack.Utilities.Extentions;
 using FrontToBack.Models;
 using System.Text.RegularExpressions;
 using Microsoft.AspNetCore.Identity;
+using FrontToBack.Utilities.Enum;
 
 namespace FrontToBack.Controllers
 {
@@ -13,11 +14,13 @@ namespace FrontToBack.Controllers
     {
         private readonly UserManager<AppUser> _userManager;
         private readonly SignInManager<AppUser> _signInManager;
+        private readonly RoleManager<IdentityRole> _roleManager;
 
-        public AccountController(UserManager<AppUser> userManager ,SignInManager<AppUser> signInManager)
+        public AccountController(UserManager<AppUser> userManager ,SignInManager<AppUser> signInManager,RoleManager<IdentityRole> roleManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _roleManager = roleManager;
         }
 
         public IActionResult Index()
@@ -70,7 +73,8 @@ namespace FrontToBack.Controllers
                     }
                 return View();
             }
-           
+
+            await _userManager.AddToRoleAsync(appUser, Roles.Member.ToString());
             await _signInManager.SignInAsync(appUser, isPersistent: false);
             return RedirectToAction(nameof(Index),"Home");
         }
@@ -119,5 +123,23 @@ namespace FrontToBack.Controllers
             return RedirectToAction(nameof(Index), "Home");
         }
 
+
+        public async Task<IActionResult> CreateRole()
+        {
+
+           
+            foreach (var item in Enum.GetValues(typeof(Roles)))
+            {
+                if (!await _roleManager.RoleExistsAsync(item.ToString()))
+                {  
+                    await _roleManager.CreateAsync(new IdentityRole
+                    {
+                        Name = item.ToString(),
+                    });
+                }
+              
+            }
+           return RedirectToAction(nameof(Index), "Home");
+        }
     }
 }

@@ -1,12 +1,15 @@
 ﻿
 using FrontToBack.DAL;
 using FrontToBack.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace FrontToBack.Areas.Manage.Controllers
 {
     [Area("Manage")]
+    [Authorize(Roles = "Admin,Moderator,Designer")]
+
     public class CategoryController : Controller
     {
         private readonly AppDbContext _context;
@@ -25,6 +28,7 @@ namespace FrontToBack.Areas.Manage.Controllers
 
         //========================================== Create =======================================//
 
+        [Authorize(Roles = "Admin,Moderator,Designer")]
 
         public IActionResult Create()
         {
@@ -51,6 +55,7 @@ namespace FrontToBack.Areas.Manage.Controllers
 
         //========================================== Update =======================================//
 
+        [Authorize(Roles = "Admin,Moderator,Designer")]
 
         public async Task<IActionResult> Update(int id)
         {
@@ -84,19 +89,8 @@ namespace FrontToBack.Areas.Manage.Controllers
 
         //========================================== Delete =======================================//
 
-        public async Task<IActionResult> Delete(int id)
-        {
-            if (id <= 0) BadRequest();
-            Category category = await _context.Categories.FirstOrDefaultAsync(c => c.Id == id);
 
-            if (category == null) NotFound();
-
-            _context.Categories.Remove(category);
-
-            await _context.SaveChangesAsync();
-
-            return RedirectToAction(nameof(Index));
-        }
+        [Authorize(Roles = "Admin,Moderator,Designer")]
         public async Task<IActionResult> Detail(int id)
         {
             if(id<0) BadRequest();
@@ -117,6 +111,22 @@ namespace FrontToBack.Areas.Manage.Controllers
             if (category == null) NotFound();
             return View(category);
 
+        }
+
+        [Authorize(Roles = "Admin")]
+
+        public async Task<IActionResult> Delete(int id)
+        {
+            if (id <= 0) BadRequest();
+            Category category = await _context.Categories.FirstOrDefaultAsync(c => c.Id == id);
+
+            if (category == null) NotFound();
+
+            _context.Categories.Remove(category);
+
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction(nameof(Index));
         }
     }
 }

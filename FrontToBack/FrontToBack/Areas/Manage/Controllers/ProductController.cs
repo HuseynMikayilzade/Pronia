@@ -9,7 +9,8 @@ using Microsoft.EntityFrameworkCore;
 namespace FrontToBack.Areas.Manage.Controllers
 {
     [Area("Manage")]
-    [Authorize]
+    [Authorize(Roles = "Admin,Moderator,Designer")]
+
     public class ProductController : Controller
     {
         private readonly AppDbContext _context;
@@ -30,6 +31,7 @@ namespace FrontToBack.Areas.Manage.Controllers
             
             return View(products);
         }
+        [Authorize(Roles = "Admin,Moderator,Designer")]
 
         public async Task<IActionResult> Create()
         {
@@ -240,6 +242,7 @@ namespace FrontToBack.Areas.Manage.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
+        [Authorize(Roles = "Admin,Moderator,Designer")]
 
         public async Task<IActionResult> Update(int id)
         {
@@ -501,6 +504,8 @@ namespace FrontToBack.Areas.Manage.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
+
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int id)
         {
             if (id <= 0) return BadRequest();
@@ -516,6 +521,8 @@ namespace FrontToBack.Areas.Manage.Controllers
             return RedirectToAction(nameof(Index));
             
         }
+        [Authorize(Roles = "Admin,Moderator,Designer")]
+
         public async Task<IActionResult> Detail(int id)
         {
            Product product = await _context.Products

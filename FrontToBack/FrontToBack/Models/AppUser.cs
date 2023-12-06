@@ -1,4 +1,4 @@
-﻿using FrontToBack.Utilities.Extentions;
+﻿using FrontToBack.Utilities.Enum;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
