@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "ehJl2Jx4g8mIWV4ZdSunirG0hUbXidgOXZu4umBN+ss=",
+  "Hash": "djYDR7hpppts97d3qtMT4409VzFZFTJbsiyRNo1eUJM=",
   "Source": "FrontToBack",
   "BasePath": "_content/FrontToBack",
   "Mode": "Default",
@@ -4384,6 +4384,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\images\\website-images\\service.png"
+    },
+    {
+      "Identity": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\assets\\js\\fetch.js",
+      "SourceId": "FrontToBack",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\",
+      "BasePath": "_content/FrontToBack",
+      "RelativePath": "assets/js/fetch.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\js\\fetch.js"
     },
     {
       "Identity": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\assets\\js\\main.js",

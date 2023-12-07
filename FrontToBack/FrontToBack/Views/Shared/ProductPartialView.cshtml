@@ -20,11 +20,11 @@
                                 <a asp-controller="product" asp-action="detail" asp-route-id="@item.Id">
                                     <img class="primary-img"
                                          src="~/assets/images/website-images//@item.ProductImages.FirstOrDefault(p=>p.IsPrimary==true)?.Url"
-                                         alt="Product Images" /> @* sekil qoyaacam *@
+                                         alt="Product Images" /> 
 
                                     <img class="secondary-img"
                                          src="~/assets/images/website-images//@item.ProductImages.FirstOrDefault(p=>p.IsPrimary==null)?.Url "
-                                         alt="Product Images" /> @* sekil qoyaacam *@
+                                         alt="Product Images" /> 
                                 </a>
                                 <div class="product-add-action">
                                     <ul>
@@ -53,7 +53,7 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="cart.html"
+                                            <a asp-action="addbasket" asp-controller="basket" asp-route-id="@item.Id"
                                                data-tippy="Add to cart"
                                                data-tippy-inertia="true"
                                                data-tippy-animation="shift-away"

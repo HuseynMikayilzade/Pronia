@@ -14,7 +14,7 @@ namespace FrontToBack
             var builder = WebApplication.CreateBuilder(args);
             builder.Services.AddControllersWithViews();
             builder.Services.AddScoped<LayoutService>();
-
+            builder.Services.AddSingleton<IHttpContextAccessor,HttpContextAccessor>();
             builder.Services.AddDbContext<AppDbContext>(
                 opt=>opt.UseSqlServer(builder.Configuration.GetConnectionString("MsSql"))
                 );

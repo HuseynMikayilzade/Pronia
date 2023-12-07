@@ -2,12 +2,16 @@
 using FrontToBack.Areas.Manage.ViewModels;
 using FrontToBack.DAL;
 using FrontToBack.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace FrontToBack.Areas.Manage.Controllers
 {
     [Area("Manage")]
+    [Authorize(Roles = "Admin,Moderator,Designer")]
+    [AutoValidateAntiforgeryToken]
+
     public class SizeController : Controller
     {
         private readonly AppDbContext _context;
@@ -15,7 +19,7 @@ namespace FrontToBack.Areas.Manage.Controllers
         {
             _context = context;
         }
-
+        [Authorize(Roles = "Admin,Moderator,Designer")]
         public async Task<IActionResult> Index()
         {
             List<Size> sizes = await _context.Sizes.Include(s => s.ProductSizes).ToListAsync();
@@ -25,6 +29,7 @@ namespace FrontToBack.Areas.Manage.Controllers
 
 
         //========================================== Create =======================================//
+        [Authorize(Roles = "Admin,Moderator,Designer")]
 
         public IActionResult Create()
         {
@@ -56,6 +61,7 @@ namespace FrontToBack.Areas.Manage.Controllers
 
         //========================================== Update =======================================//
 
+        [Authorize(Roles = "Admin,Moderator,Designer")]
 
         public async Task<IActionResult> Update(int id)
         {
@@ -92,6 +98,7 @@ namespace FrontToBack.Areas.Manage.Controllers
 
 
         //========================================== Delete =======================================//
+        [Authorize(Roles = "Admin,Moderator")]
 
         public async Task<IActionResult> Delete(int id)
         {
@@ -107,6 +114,7 @@ namespace FrontToBack.Areas.Manage.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        [Authorize(Roles = "Admin,Moderator,Designer")]
 
         public async Task<IActionResult> Detail(int id)
         {

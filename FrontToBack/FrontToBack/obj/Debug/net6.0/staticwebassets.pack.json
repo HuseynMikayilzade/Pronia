@@ -1029,6 +1029,10 @@
       "PackagePath": "staticwebassets\\assets\\images\\website-images\\service.png"
     },
     {
+      "Id": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\assets\\js\\fetch.js",
+      "PackagePath": "staticwebassets\\assets\\js\\fetch.js"
+    },
+    {
       "Id": "C:\\Users\\User\\Desktop\\task\\FrontToBack\\FrontToBack\\wwwroot\\assets\\js\\main.js",
       "PackagePath": "staticwebassets\\assets\\js\\main.js"
     },

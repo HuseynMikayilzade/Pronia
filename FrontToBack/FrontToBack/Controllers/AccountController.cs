@@ -115,8 +115,6 @@ namespace FrontToBack.Controllers
             }
             return Redirect(returnurl);
         }
-
-
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();

@@ -1,12 +1,16 @@
 ﻿using FrontToBack.Areas.Manage.ViewModels;
 using FrontToBack.DAL;
 using FrontToBack.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace FrontToBack.Areas.Manage.Controllers
 {
     [Area("Manage")]
+    [Authorize(Roles = "Admin,Moderator,Designer")]
+    [AutoValidateAntiforgeryToken]
+
     public class TagController : Controller
     {
         private readonly AppDbContext _context;
@@ -15,6 +19,7 @@ namespace FrontToBack.Areas.Manage.Controllers
         {
             _context = context;
         }
+        [Authorize(Roles = "Admin,Moderator,Designer")]
 
         public async Task<IActionResult> Index()
         {
@@ -24,6 +29,7 @@ namespace FrontToBack.Areas.Manage.Controllers
         }
 
         //========================================== Create =======================================//
+        [Authorize(Roles = "Admin,Moderator,Designer")]
 
         public IActionResult Create()
         {
@@ -51,6 +57,8 @@ namespace FrontToBack.Areas.Manage.Controllers
         }
 
         //========================================== Update =======================================//
+        [Authorize(Roles = "Admin,Moderator,Designer")]
+
          public async Task<IActionResult> Update(int id)
          {
             if (id <= 0) BadRequest();
@@ -88,6 +96,8 @@ namespace FrontToBack.Areas.Manage.Controllers
 
 
         //========================================== Delete =======================================//
+        [Authorize(Roles = "Admin")]
+
         public async Task<IActionResult> Delete(int id)
         {
             if (id <= 0) BadRequest();
@@ -102,6 +112,7 @@ namespace FrontToBack.Areas.Manage.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        [Authorize(Roles = "Admin,Moderator,Designer")]
         public async Task<IActionResult> Detail(int id)
         {
             if (id <= 0) return BadRequest();

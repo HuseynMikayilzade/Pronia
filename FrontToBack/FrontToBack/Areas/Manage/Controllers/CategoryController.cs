@@ -9,7 +9,7 @@ namespace FrontToBack.Areas.Manage.Controllers
 {
     [Area("Manage")]
     [Authorize(Roles = "Admin,Moderator,Designer")]
-
+    [AutoValidateAntiforgeryToken] 
     public class CategoryController : Controller
     {
         private readonly AppDbContext _context;
@@ -24,11 +24,9 @@ namespace FrontToBack.Areas.Manage.Controllers
        
             return View(categories);
         }
-
-
         //========================================== Create =======================================//
 
-        [Authorize(Roles = "Admin,Moderator,Designer")]
+        [Authorize(Roles = "Admin,Moderator")]
 
         public IActionResult Create()
         {
@@ -55,7 +53,7 @@ namespace FrontToBack.Areas.Manage.Controllers
 
         //========================================== Update =======================================//
 
-        [Authorize(Roles = "Admin,Moderator,Designer")]
+        [Authorize(Roles = "Admin,Moderator")]
 
         public async Task<IActionResult> Update(int id)
         {

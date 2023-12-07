@@ -10,6 +10,7 @@ namespace FrontToBack.Areas.Manage.Controllers
 {
     [Area("Manage")]
     [Authorize(Roles = "Admin,Moderator,Designer")]
+    [AutoValidateAntiforgeryToken]
 
     public class ProductController : Controller
     {
@@ -21,7 +22,7 @@ namespace FrontToBack.Areas.Manage.Controllers
             _context = context;
             _env = env;
         }
-
+        [Authorize(Roles = "Admin,Moderator,Designer")]
         public async Task<IActionResult> Index()
         {
             List<Product> products = await  _context.Products
@@ -31,8 +32,9 @@ namespace FrontToBack.Areas.Manage.Controllers
             
             return View(products);
         }
-        [Authorize(Roles = "Admin,Moderator,Designer")]
 
+
+        [Authorize(Roles = "Admin,Moderator,Designer")]
         public async Task<IActionResult> Create()
         {
             CreateProductVm createProductVm = new CreateProductVm();
@@ -242,8 +244,10 @@ namespace FrontToBack.Areas.Manage.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
-        [Authorize(Roles = "Admin,Moderator,Designer")]
 
+
+
+        [Authorize(Roles = "Admin,Moderator,Designer")]
         public async Task<IActionResult> Update(int id)
         {
             if (id <= 0) return BadRequest();
@@ -521,8 +525,9 @@ namespace FrontToBack.Areas.Manage.Controllers
             return RedirectToAction(nameof(Index));
             
         }
-        [Authorize(Roles = "Admin,Moderator,Designer")]
 
+
+        [Authorize(Roles = "Admin,Moderator,Designer")]
         public async Task<IActionResult> Detail(int id)
         {
            Product product = await _context.Products
