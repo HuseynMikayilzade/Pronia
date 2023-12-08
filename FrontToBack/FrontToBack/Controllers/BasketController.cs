@@ -47,6 +47,10 @@ namespace FrontToBack.Controllers
                     });
 
                 }
+                if (Request.Cookies["Basket"]!=null)
+                {
+                    Response.Cookies.Delete("Basket");
+                }
             }
             else
             {
@@ -100,7 +104,7 @@ namespace FrontToBack.Controllers
                 {
                     basketItem = new BasketItem
                     {
-                        UserId = appuser.Id,
+                        AppUserId = appuser.Id,
                         ProductId = product.Id,
                         Count = 1,
                         Price = product.Price,
@@ -162,16 +166,30 @@ namespace FrontToBack.Controllers
         public async Task<IActionResult> Delete(int id)
         {
             if (id <= 0) return BadRequest();
-            List<BasketCookieItemVm> basket = JsonConvert.DeserializeObject<List<BasketCookieItemVm>>(Request.Cookies["Basket"]);
-            if (basket == null) return BadRequest();
+            Product product = await _context.Products.FirstOrDefaultAsync(x => x.Id == id);
+            if (product == null) return NotFound();
 
-            BasketCookieItemVm existed = basket.FirstOrDefault(b => b.Id == id);
+            if (User.Identity.IsAuthenticated)
+            {
+                AppUser appuser = await _userManager.Users.Include(u => u.BasketItems)
+                    .FirstOrDefaultAsync(u => u.Id == User.FindFirstValue(ClaimTypes.NameIdentifier));
 
+                if (appuser == null) return NotFound();
+                BasketItem basketItem = appuser.BasketItems.FirstOrDefault(b => b.ProductId == product.Id);
+                appuser.BasketItems.Remove(basketItem);
+                await _context.SaveChangesAsync();
+            }
+            else
+            {
+                List<BasketCookieItemVm> basket = JsonConvert.DeserializeObject<List<BasketCookieItemVm>>(Request.Cookies["Basket"]);
+                if (basket == null) return BadRequest();
 
-            basket.Remove(existed);
+                BasketCookieItemVm existed = basket.FirstOrDefault(b => b.Id == id);
+                basket.Remove(existed);
+                string json = JsonConvert.SerializeObject(basket);
+                Response.Cookies.Append("Basket", json);
 
-            string json = JsonConvert.SerializeObject(basket);
-            Response.Cookies.Append("Basket", json);
+            }
 
             return RedirectToAction(nameof(Index));
         }
@@ -182,26 +200,52 @@ namespace FrontToBack.Controllers
         public async Task<IActionResult> PlusBasket(int id)
         {
             if (id <= 0) return BadRequest();
+            Product product = await _context.Products.FirstOrDefaultAsync(bi => bi.Id == id);
+            if (product == null) return NotFound();
 
-            List<BasketCookieItemVm> basket = JsonConvert.DeserializeObject<List<BasketCookieItemVm>>(Request.Cookies["Basket"]);
-            if (basket == null) return NotFound();
-
-            BasketCookieItemVm existed = basket.FirstOrDefault(b => b.Id == id);
-
-            if (existed != null)
+            if (User.Identity.IsAuthenticated)
             {
-                if (existed.Count > 0)
+                AppUser appuser = await _userManager.Users.Include(u => u.BasketItems).FirstOrDefaultAsync(u => u.Id == User.FindFirstValue(ClaimTypes.NameIdentifier));
+                if (appuser == null) return NotFound();
+                BasketItem basketItem = appuser.BasketItems.FirstOrDefault(bi => bi.ProductId == product.Id);
+                if (basketItem == null)
                 {
-
-                    existed.Count++;
+                    basketItem = new BasketItem
+                    {
+                        Price = product.Price,
+                        ProductId = product.Id,
+                        Count = 1,
+                        AppUserId = appuser.Id,
+                    };
                 }
                 else
                 {
-                    basket.Add(existed);
+                    basketItem.Count++;
                 }
+                await _context.SaveChangesAsync();
             }
-            string json = JsonConvert.SerializeObject(basket);
-            Response.Cookies.Append("Basket", json);
+            else
+            {
+                List<BasketCookieItemVm> basket = JsonConvert.DeserializeObject<List<BasketCookieItemVm>>(Request.Cookies["Basket"]);
+                if (basket == null) return NotFound();
+
+                BasketCookieItemVm existed = basket.FirstOrDefault(b => b.Id == id);
+
+                if (existed != null)
+                {
+                    if (existed.Count > 0)
+                    {
+
+                        existed.Count++;
+                    }
+                    else
+                    {
+                        basket.Add(existed);
+                    }
+                }
+                string json = JsonConvert.SerializeObject(basket);
+                Response.Cookies.Append("Basket", json);
+            }
             return RedirectToAction(nameof(Index), "Basket");
         }
 
@@ -210,30 +254,56 @@ namespace FrontToBack.Controllers
         public async Task<IActionResult> MinusBasket(int id)
         {
             if (id <= 0) return BadRequest();
+            Product product = await _context.Products.FirstOrDefaultAsync(p => p.Id == id);
+            if (product == null) return NotFound();
 
-            List<BasketCookieItemVm> basket = JsonConvert.DeserializeObject<List<BasketCookieItemVm>>(Request.Cookies["Basket"]);
-            if (basket == null) return NotFound();
-
-            BasketCookieItemVm existed = basket.FirstOrDefault(b => b.Id == id);
-
-            if (existed != null)
+            if (User.Identity.IsAuthenticated)
             {
-                if (existed.Count > 1)
-                {
+                AppUser appUser = await _userManager.Users.Include(u=>u.BasketItems).FirstOrDefaultAsync(u => u.Id == User.FindFirstValue(ClaimTypes.NameIdentifier));
+                if (appUser == null) return NotFound();
 
-                    existed.Count--;
+                BasketItem basketitem = appUser.BasketItems.FirstOrDefault(bi => bi.ProductId == product.Id);
+                if (basketitem == null)
+                {
+                    basketitem = new BasketItem
+                    {
+                        ProductId = product.Id,
+                        AppUserId = appUser.Id,
+                        Price = product.Price,
+                        Count = basketitem.Count
+                    };
                 }
                 else
                 {
-                    basket.Remove(existed);
+                    basketitem.Count--;
                 }
+                await _context.SaveChangesAsync();
             }
-            string json = JsonConvert.SerializeObject(basket);
-            Response.Cookies.Append("Basket", json);
+            else
+            {
+                List<BasketCookieItemVm> basket = JsonConvert.DeserializeObject<List<BasketCookieItemVm>>(Request.Cookies["Basket"]);
+                if (basket == null) return NotFound();
+
+                BasketCookieItemVm existed = basket.FirstOrDefault(b => b.Id == id);
+
+                if (existed != null)
+                {
+                    if (existed.Count > 1)
+                    {
+
+                        existed.Count--;
+                    }
+                    else
+                    {
+                        basket.Remove(existed);
+                    }
+                }
+                string json = JsonConvert.SerializeObject(basket);
+                Response.Cookies.Append("Basket", json);
+            }
             return RedirectToAction(nameof(Index), "Basket");
+
         }
-
-
         public async Task<IActionResult> CheckOut()
         {
             return View();

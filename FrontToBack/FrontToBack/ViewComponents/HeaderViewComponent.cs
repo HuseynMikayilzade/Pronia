@@ -25,10 +25,6 @@ namespace FrontToBack.ViewComponents
         public async Task<IViewComponentResult> InvokeAsync()
         {
             Dictionary<string, string> setting = await _context.Settings.ToDictionaryAsync(s => s.Key, s => s.Value);
-
-
-
-
             List<BasketItemVm> itemvm = new List<BasketItemVm>();
 
             if (User.Identity.IsAuthenticated)
@@ -48,13 +44,10 @@ namespace FrontToBack.ViewComponents
                         image = item.Product.ProductImages.FirstOrDefault(pi => pi.IsPrimary == true)?.Url,
                         SubTotal = item.Count * item.Product.Price
                     });
-
                 }
-
             }
             else
             {
-
                 if (Request.Cookies["Basket"] != null)
                 {
                     List<BasketCookieItemVm> cookies = JsonConvert.DeserializeObject<List<BasketCookieItemVm>>(Request.Cookies["Basket"]);
@@ -79,7 +72,6 @@ namespace FrontToBack.ViewComponents
                         }
                     }
                 }
-
             }
 
             HeaderBasketVm headerBasketVm = new HeaderBasketVm

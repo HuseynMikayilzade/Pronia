@@ -108,7 +108,6 @@ namespace FrontToBack.Controllers
                 ModelState.AddModelError(String.Empty, "Email ,Username or password is incorrect");
                 return View();
             }
-
             if (returnurl == null)
             {
                 return RedirectToAction(nameof(Index), "Home");

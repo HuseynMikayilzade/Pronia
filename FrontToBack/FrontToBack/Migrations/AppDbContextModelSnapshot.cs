@@ -107,6 +107,7 @@ namespace FrontToBack.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("AppUserId")
+                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<int>("Count")
@@ -120,10 +121,6 @@ namespace FrontToBack.Migrations
 
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
-
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -567,8 +564,10 @@ namespace FrontToBack.Migrations
             modelBuilder.Entity("FrontToBack.Models.BasketItem", b =>
                 {
                     b.HasOne("FrontToBack.Models.AppUser", "AppUser")
-                        .WithMany()
-                        .HasForeignKey("AppUserId");
+                        .WithMany("BasketItems")
+                        .HasForeignKey("AppUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("FrontToBack.Models.Order", "Order")
                         .WithMany("BasketItems")
@@ -715,6 +714,11 @@ namespace FrontToBack.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("FrontToBack.Models.AppUser", b =>
+                {
+                    b.Navigation("BasketItems");
                 });
 
             modelBuilder.Entity("FrontToBack.Models.Category", b =>
