@@ -47,10 +47,7 @@ namespace FrontToBack.Controllers
                     });
 
                 }
-                if (Request.Cookies["Basket"]!=null)
-                {
-                    Response.Cookies.Delete("Basket");
-                }
+            
             }
             else
             {

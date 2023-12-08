@@ -108,6 +108,10 @@ namespace FrontToBack.Controllers
                 ModelState.AddModelError(String.Empty, "Email ,Username or password is incorrect");
                 return View();
             }
+            if (Request.Cookies["Basket"] != null)
+            {
+                Response.Cookies.Delete("Basket");
+            }
             if (returnurl == null)
             {
                 return RedirectToAction(nameof(Index), "Home");
