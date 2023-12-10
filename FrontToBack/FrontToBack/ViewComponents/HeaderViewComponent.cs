@@ -30,7 +30,7 @@ namespace FrontToBack.ViewComponents
             if (User.Identity.IsAuthenticated)
             {
                 AppUser appUser = await _userManager.Users
-                    .Include(u => u.BasketItems).ThenInclude(bi => bi.Product)
+                    .Include(u => u.BasketItems.Where(bi => bi.OrderId == null)).ThenInclude(bi => bi.Product)
                     .ThenInclude(p => p.ProductImages.Where(pi => pi.IsPrimary == true))
                     .FirstOrDefaultAsync(u => u.Id == _http.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier));
                 foreach (var item in appUser.BasketItems)
@@ -41,7 +41,7 @@ namespace FrontToBack.ViewComponents
                         Price = item.Product.Price,
                         Name = item.Product.Name,
                         Count = item.Count,
-                        image = item.Product.ProductImages.FirstOrDefault(pi => pi.IsPrimary == true)?.Url,
+                        image = item.Product.ProductImages.FirstOrDefault()?.Url,
                         SubTotal = item.Count * item.Product.Price
                     });
                 }
@@ -63,7 +63,7 @@ namespace FrontToBack.ViewComponents
                                     Id = product.Id,
                                     Name = product.Name,
                                     Price = product.Price,
-                                    image = product.ProductImages.FirstOrDefault().Url,
+                                    image = product.ProductImages.FirstOrDefault()?.Url,
                                     Count = item.Count,
                                     SubTotal = item.Count * product.Price,
                                 };

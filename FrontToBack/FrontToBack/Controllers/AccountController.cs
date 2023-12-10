@@ -7,6 +7,7 @@ using FrontToBack.Models;
 using System.Text.RegularExpressions;
 using Microsoft.AspNetCore.Identity;
 using FrontToBack.Utilities.Enum;
+using FrontToBack.Interfaces;
 
 namespace FrontToBack.Controllers
 {
@@ -21,6 +22,7 @@ namespace FrontToBack.Controllers
             _userManager = userManager;
             _signInManager = signInManager;
             _roleManager = roleManager;
+           
         }
 
         public IActionResult Index()

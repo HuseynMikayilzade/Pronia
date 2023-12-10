@@ -1,4 +1,8 @@
-﻿@model List<BasketItemVm>
+﻿@model OrderVm
+
+@{
+    var successMessage = TempData["SuccessMessage"] as string;
+}
 
 
 <main class="main-content">
@@ -25,10 +29,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="coupon-accordion">
-                        <h3>
-                            Returning customer?
-                            <span id="showlogin">Click here to login</span>
-                        </h3>
+                        
                         <div id="checkout-login" class="coupon-content">
                             <div class="coupon-info">
                                 <p class="coupon-text mb-1">
@@ -43,8 +44,10 @@
                                         </label>
                                         <input type="text" />
                                     </p>
+                                  
 
                                 </form>
+                               
                             </div>
                         </div>
 
@@ -53,17 +56,26 @@
             </div>
             <div class="row">
                 <div class="col-lg-6 col-12">
-                    <form action="javascript:void(0)">
+                    <form  method="post">
                         <div class="checkbox-form">
                             <h3>Billing Details</h3>
+                            @if (!string.IsNullOrEmpty(successMessage))
+                            {
+                                <div class="alert alert-success">
+                                    @successMessage
+                                </div>
+                            }
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="checkout-form-list">
-                                        <label>Address <span class="required">*</span></label>
-                                        <input placeholder="Street address" type="text" />
+                                        <label asp-for="Adress" >Address <span class="required">*</span></label>
+                                        <input asp-for="Adress" placeholder="Street address" />
+                                        <span class="text-danger" asp-validation-for="Adress"></span>
                                     </div>
                                 </div>
-
+                                <div class="order-button-payment">
+                                    <input value="Place order" type="submit" />
+                                </div>                               
                             </div>
 
                         </div>
@@ -82,31 +94,26 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                   @*  @foreach (var item in Model)
+                                     @foreach (var item in Model.BasketItems)
                                     {
                                         <tr class="cart_item">
                                             <td class="cart-product-name">
-                                                @item.Name<strong class="product-quantity">
+                                                @item.Product.Name<strong class="product-quantity">
                                                     × @item.Count
                                                 </strong>
                                             </td>
                                             <td class="cart-product-total">
-                                                <span class="amount">$@item.Price</span>
+                                                <span class="amount">$@(item.Count * item.Price)</span>
                                             </td>
                                         </tr>
-                                    } *@
+                                    }
                                 </tbody>
                                 <tfoot>
                                     <tr class="cart-subtotal">
-                                        <th>Cart Subtotal</th>
-                                        <td><span class="amount">$@* @Model.Sum(p=>p.Price) *@</span></td>
+                                        <th>Cart Total</th>
+                                        <td><span class="amount">$@Model.BasketItems.Sum(bi=>bi.Price)</span></td>
                                     </tr>
-                                    <tr class="order-total">
-                                        <th>Order Total</th>
-                                        <td>
-                                            <strong><span class="amount">$215.00</span></strong>
-                                        </td>
-                                    </tr>
+                                
                                 </tfoot>
                             </table>
                         </div>
@@ -189,9 +196,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="order-button-payment">
-                                    <input value="Place order" type="submit" />
-                                </div>
+                               
                             </div>
                         </div>
                     </div>

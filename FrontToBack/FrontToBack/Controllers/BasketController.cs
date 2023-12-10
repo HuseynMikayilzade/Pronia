@@ -1,6 +1,9 @@
 ﻿using FrontToBack.DAL;
+using FrontToBack.Interfaces;
 using FrontToBack.Models;
+using FrontToBack.Services;
 using FrontToBack.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -16,11 +19,13 @@ namespace FrontToBack.Controllers
     {
         private readonly AppDbContext _context;
         private readonly UserManager<AppUser> _userManager;
+        private readonly IEmailService _emailService;
 
-        public BasketController(AppDbContext context, UserManager<AppUser> userManager)
+        public BasketController(AppDbContext context, UserManager<AppUser> userManager, IEmailService emailService)
         {
             _context = context;
             _userManager = userManager;
+            _emailService = emailService;
         }
         public async Task<IActionResult> Index()
         {
@@ -29,7 +34,7 @@ namespace FrontToBack.Controllers
             if (User.Identity.IsAuthenticated)
             {
                 AppUser appUser = await _userManager.Users
-                    .Include(u => u.BasketItems)
+                    .Include(u => u.BasketItems.Where(bi => bi.OrderId == null))
                     .ThenInclude(bi => bi.Product)
                     .ThenInclude(p => p.ProductImages.Where(pi => pi.IsPrimary == true))
                     .FirstOrDefaultAsync(u => u.Id == User.FindFirstValue(ClaimTypes.NameIdentifier));
@@ -47,7 +52,6 @@ namespace FrontToBack.Controllers
                     });
 
                 }
-            
             }
             else
             {
@@ -93,7 +97,7 @@ namespace FrontToBack.Controllers
             if (User.Identity.IsAuthenticated)
             {
                 AppUser appuser = await _userManager.Users
-                    .Include(u => u.BasketItems).FirstOrDefaultAsync(x => x.Id == User.FindFirstValue(ClaimTypes.NameIdentifier));
+                    .Include(u => u.BasketItems.Where(bi => bi.OrderId == null)).FirstOrDefaultAsync(x => x.Id == User.FindFirstValue(ClaimTypes.NameIdentifier));
                 if (appuser == null) NotFound();
 
                 BasketItem basketItem = appuser.BasketItems.FirstOrDefault(p => p.ProductId == product.Id);
@@ -168,7 +172,7 @@ namespace FrontToBack.Controllers
 
             if (User.Identity.IsAuthenticated)
             {
-                AppUser appuser = await _userManager.Users.Include(u => u.BasketItems)
+                AppUser appuser = await _userManager.Users.Include(u => u.BasketItems.Where(bi => bi.OrderId == null))
                     .FirstOrDefaultAsync(u => u.Id == User.FindFirstValue(ClaimTypes.NameIdentifier));
 
                 if (appuser == null) return NotFound();
@@ -202,7 +206,7 @@ namespace FrontToBack.Controllers
 
             if (User.Identity.IsAuthenticated)
             {
-                AppUser appuser = await _userManager.Users.Include(u => u.BasketItems).FirstOrDefaultAsync(u => u.Id == User.FindFirstValue(ClaimTypes.NameIdentifier));
+                AppUser appuser = await _userManager.Users.Include(u => u.BasketItems.Where(bi => bi.OrderId == null)).FirstOrDefaultAsync(u => u.Id == User.FindFirstValue(ClaimTypes.NameIdentifier));
                 if (appuser == null) return NotFound();
                 BasketItem basketItem = appuser.BasketItems.FirstOrDefault(bi => bi.ProductId == product.Id);
                 if (basketItem == null)
@@ -256,7 +260,7 @@ namespace FrontToBack.Controllers
 
             if (User.Identity.IsAuthenticated)
             {
-                AppUser appUser = await _userManager.Users.Include(u=>u.BasketItems).FirstOrDefaultAsync(u => u.Id == User.FindFirstValue(ClaimTypes.NameIdentifier));
+                AppUser appUser = await _userManager.Users.Include(u => u.BasketItems.Where(bi => bi.OrderId == null)).FirstOrDefaultAsync(u => u.Id == User.FindFirstValue(ClaimTypes.NameIdentifier));
                 if (appUser == null) return NotFound();
 
                 BasketItem basketitem = appUser.BasketItems.FirstOrDefault(bi => bi.ProductId == product.Id);
@@ -301,9 +305,86 @@ namespace FrontToBack.Controllers
             return RedirectToAction(nameof(Index), "Basket");
 
         }
+        [Authorize(Roles ="Member")]
         public async Task<IActionResult> CheckOut()
         {
-            return View();
+            AppUser appUser = await _userManager.Users
+                .Include(u => u.BasketItems.Where(bi => bi.OrderId == null)).ThenInclude(bi => bi.Product)
+                .FirstOrDefaultAsync(u => u.Id == User.FindFirstValue(ClaimTypes.NameIdentifier));
+
+            if (appUser == null) return NotFound();
+            OrderVm ordervm = new OrderVm
+            {
+                BasketItems = appUser.BasketItems,
+
+            };
+            return View(ordervm);
+        }
+        [HttpPost]
+        public async Task<IActionResult> CheckOut(OrderVm orderVm)
+        {
+            AppUser appUser = await _userManager.Users
+                .Include(u => u.BasketItems.Where(bi => bi.OrderId == null)).ThenInclude(bi => bi.Product)
+                .FirstOrDefaultAsync(u => u.Id == User.FindFirstValue(ClaimTypes.NameIdentifier));
+            if (appUser == null) return NotFound();
+            if (!ModelState.IsValid)
+            {
+                orderVm.BasketItems = appUser.BasketItems;
+
+                return View(orderVm);
+            }
+
+            decimal total = 0;
+            foreach (var item in appUser.BasketItems)
+            {
+                item.Price = item.Product.Price;
+                total += item.Price * item.Count;
+            }
+
+            Order order = new Order
+            {
+                Adress = orderVm.Adress,
+                AppUserId = appUser.Id,
+                Status = null,
+                Received = DateTime.Now,
+                BasketItems = appUser.BasketItems,
+                TotalPrice = total
+            };
+
+            await _context.Orders.AddAsync(order);
+            await _context.SaveChangesAsync();
+
+            TempData["SuccessMessage"] = "Your order has been completed successfully. Thanks!";
+
+            string emailbody = @"<table style=""width: 100%; border-collapse: collapse; margin-top: 20px;"">
+                                 <thead>
+                                     <tr>
+                                         <th style = ""background-color: #4CAF50; color: white; padding: 12px; text-align: left; border-bottom: 1px solid #ddd;""> Name </th>
+                                         <th style = ""background-color: #4CAF50; color: white; padding: 12px; text-align: left; border-bottom: 1px solid #ddd;""> Price </th>
+                                         <th style = ""background-color: #4CAF50; color: white; padding: 12px; text-align: left; border-bottom: 1px solid #ddd;""> Count </th>
+                                     </tr>
+                                 </thead>
+                                 <tbody>";
+            foreach (var item in appUser.BasketItems)
+            {
+                emailbody += $@" <tr style = ""background-color: #f9f9f9;"">
+                                     <td style = ""padding: 12px; text-align: left; border-bottom: 1px solid #ddd;""> {item.Product.Name} </td>
+                                     <td style = ""padding: 12px; text-align: left; border-bottom: 1px solid #ddd;"">${item.Price}</td>
+                                     <td style = ""padding: 12px; text-align: left; border-bottom: 1px solid #ddd;""> {item.Count} </td>
+                                     
+                                 </tr>";
+            }
+            emailbody += $@"
+                           <th style = ""background-color: #4CAF50; color: white; padding: 12px; text-align: left; border-bottom: 1px solid #ddd;""> Total: {appUser.BasketItems.Sum(bi=>bi.Price)}</th>
+                               </tbody>
+                           </table>";
+            await _emailService.SendEmailAsync(appUser.Email,"Test Subject",emailbody,true);
+
+            return RedirectToAction(nameof(CheckOut), "Basket");
         }
     }
 }
+
+
+
+
