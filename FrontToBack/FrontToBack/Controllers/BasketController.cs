@@ -12,6 +12,8 @@ using System.Collections.Generic;
 using System.Net;
 using System.Security.Claims;
 using System.Text.Json.Serialization;
+using FrontToBack.Utilities.Extentions;
+using Microsoft.Extensions.Hosting;
 
 namespace FrontToBack.Controllers
 {
@@ -38,7 +40,8 @@ namespace FrontToBack.Controllers
                     .ThenInclude(bi => bi.Product)
                     .ThenInclude(p => p.ProductImages.Where(pi => pi.IsPrimary == true))
                     .FirstOrDefaultAsync(u => u.Id == User.FindFirstValue(ClaimTypes.NameIdentifier));
-
+                if (appUser == null) return NotFound();
+                
                 foreach (var item in appUser.BasketItems)
                 {
                     itemvm.Add(new BasketItemVm
@@ -63,6 +66,8 @@ namespace FrontToBack.Controllers
                         foreach (var item in cookies)
                         {
                             Product product = await _context.Products.Include(p => p.ProductImages.Where(pi => pi.IsPrimary == true)).FirstOrDefaultAsync(p => p.Id == item.Id);
+                            if (product == null) return NotFound();
+                         
                             if (cookies != null)
                             {
 
@@ -83,8 +88,6 @@ namespace FrontToBack.Controllers
             }
             return View(itemvm);
         }
-
-
 
         //=======================================AaddBasket=====================================//
 
@@ -177,6 +180,7 @@ namespace FrontToBack.Controllers
 
                 if (appuser == null) return NotFound();
                 BasketItem basketItem = appuser.BasketItems.FirstOrDefault(b => b.ProductId == product.Id);
+                if (basketItem == null) return NotFound(); 
                 appuser.BasketItems.Remove(basketItem);
                 await _context.SaveChangesAsync();
             }
@@ -186,6 +190,7 @@ namespace FrontToBack.Controllers
                 if (basket == null) return BadRequest();
 
                 BasketCookieItemVm existed = basket.FirstOrDefault(b => b.Id == id);
+                if (existed == null) return NotFound();
                 basket.Remove(existed);
                 string json = JsonConvert.SerializeObject(basket);
                 Response.Cookies.Append("Basket", json);
@@ -305,6 +310,11 @@ namespace FrontToBack.Controllers
             return RedirectToAction(nameof(Index), "Basket");
 
         }
+
+
+
+        //=======================================CheckOut=====================================//
+
         [Authorize(Roles ="Member")]
         public async Task<IActionResult> CheckOut()
         {
@@ -356,28 +366,7 @@ namespace FrontToBack.Controllers
 
             TempData["SuccessMessage"] = "Your order has been completed successfully. Thanks!";
 
-            string emailbody = @"<table style=""width: 100%; border-collapse: collapse; margin-top: 20px;"">
-                                 <thead>
-                                     <tr>
-                                         <th style = ""background-color: #4CAF50; color: white; padding: 12px; text-align: left; border-bottom: 1px solid #ddd;""> Name </th>
-                                         <th style = ""background-color: #4CAF50; color: white; padding: 12px; text-align: left; border-bottom: 1px solid #ddd;""> Price </th>
-                                         <th style = ""background-color: #4CAF50; color: white; padding: 12px; text-align: left; border-bottom: 1px solid #ddd;""> Count </th>
-                                     </tr>
-                                 </thead>
-                                 <tbody>";
-            foreach (var item in appUser.BasketItems)
-            {
-                emailbody += $@" <tr style = ""background-color: #f9f9f9;"">
-                                     <td style = ""padding: 12px; text-align: left; border-bottom: 1px solid #ddd;""> {item.Product.Name} </td>
-                                     <td style = ""padding: 12px; text-align: left; border-bottom: 1px solid #ddd;"">${item.Price}</td>
-                                     <td style = ""padding: 12px; text-align: left; border-bottom: 1px solid #ddd;""> {item.Count} </td>
-                                     
-                                 </tr>";
-            }
-            emailbody += $@"
-                           <th style = ""background-color: #4CAF50; color: white; padding: 12px; text-align: left; border-bottom: 1px solid #ddd;""> Total: {appUser.BasketItems.Sum(bi=>bi.Price)}</th>
-                               </tbody>
-                           </table>";
+            string emailbody = EmailBodyCreator.EmailBody(appUser);
             await _emailService.SendEmailAsync(appUser.Email,"Test Subject",emailbody,true);
 
             return RedirectToAction(nameof(CheckOut), "Basket");
