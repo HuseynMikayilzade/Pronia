@@ -20,11 +20,28 @@ namespace FrontToBack.Areas.Manage.Controllers
             _context = context;
         }
         [Authorize(Roles = "Admin,Moderator,Designer")]
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int page = 1)
         {
-            List<Size> sizes = await _context.Sizes.Include(s => s.ProductSizes).ToListAsync();
-         
-            return View(sizes);
+            double count = await _context.Sizes.CountAsync();
+            double TotalPage = Math.Ceiling(count / 4);
+            if (page <= 0)
+            {
+                return BadRequest();
+            }
+            else if (page > TotalPage)
+            {
+                return BadRequest();
+            }
+
+            List<Size> sizes = await _context.Sizes.Skip((page - 1) * 4).Take(4).Include(s => s.ProductSizes).ToListAsync();
+            if (sizes == null) return NotFound();
+            PaginationVm<Size> paginationVm = new PaginationVm<Size>
+            {
+                Items = sizes,
+                TotalPage = TotalPage,
+                PageCount =(int) count
+            };
+            return View(paginationVm);
         }
 
 
@@ -42,7 +59,7 @@ namespace FrontToBack.Areas.Manage.Controllers
             {
                 return View();
             }
-            bool result = await _context.Sizes.AnyAsync(t=>t.Name == createSizeVM.Name);
+            bool result = await _context.Sizes.AnyAsync(t => t.Name == createSizeVM.Name);
             if (result)
             {
                 ModelState.AddModelError("Name", "This size is aviable");
@@ -66,7 +83,7 @@ namespace FrontToBack.Areas.Manage.Controllers
         public async Task<IActionResult> Update(int id)
         {
             if (id <= 0) BadRequest();
-            Size size =await  _context.Sizes.FirstOrDefaultAsync(s => s.Id == id);
+            Size size = await _context.Sizes.FirstOrDefaultAsync(s => s.Id == id);
             if (size == null) NotFound();
             CreateSizeVM createSizeVM = new CreateSizeVM
             {
@@ -82,16 +99,16 @@ namespace FrontToBack.Areas.Manage.Controllers
             {
                 return View();
             }
-            Size exist= await _context.Sizes.FirstOrDefaultAsync(s=>s.Id == id);
+            Size exist = await _context.Sizes.FirstOrDefaultAsync(s => s.Id == id);
             if (exist == null) NotFound();
 
-            bool result = await _context.Sizes.AnyAsync(s=>s.Name == createSizeVM.Name && s.Id!=id);
+            bool result = await _context.Sizes.AnyAsync(s => s.Name == createSizeVM.Name && s.Id != id);
             if (result)
             {
                 ModelState.AddModelError("Name", "This size is aviable");
                 return View();
             }
-            exist.Name= createSizeVM.Name;
+            exist.Name = createSizeVM.Name;
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
@@ -103,7 +120,7 @@ namespace FrontToBack.Areas.Manage.Controllers
         public async Task<IActionResult> Delete(int id)
         {
             if (id <= 0) BadRequest();
-           Size size = await _context.Sizes.FirstOrDefaultAsync(s => s.Id == id);
+            Size size = await _context.Sizes.FirstOrDefaultAsync(s => s.Id == id);
 
             if (size == null) NotFound();
 
@@ -119,7 +136,7 @@ namespace FrontToBack.Areas.Manage.Controllers
         public async Task<IActionResult> Detail(int id)
         {
             if (id <= 0) return BadRequest();
-           Size size = await _context.Sizes.Include(t => t.ProductSizes).FirstOrDefaultAsync(t => t.Id == id);
+            Size size = await _context.Sizes.Include(t => t.ProductSizes).FirstOrDefaultAsync(t => t.Id == id);
             if (size == null) NotFound();
             return View(size);
 

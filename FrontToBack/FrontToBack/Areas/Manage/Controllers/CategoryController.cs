@@ -1,4 +1,5 @@
 ﻿
+using FrontToBack.Areas.Manage.ViewModels;
 using FrontToBack.DAL;
 using FrontToBack.Models;
 using Microsoft.AspNetCore.Authorization;
@@ -17,12 +18,28 @@ namespace FrontToBack.Areas.Manage.Controllers
         {
             _context = context;
         }
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int page=1)
         {
-            List<Category> categories = await _context.Categories.Include(c=>c.Products).ToListAsync();
-
-       
-            return View(categories);
+            double count = await _context.Categories.CountAsync();
+            double TotalPage = Math.Ceiling(count / 4);
+            if (page <= 0)
+            {
+                return BadRequest();
+            }
+            else if (page > TotalPage)
+            {
+                return BadRequest();
+            }
+            
+            List<Category> categories = await _context.Categories.Skip((page-1)*4).Take(4).Include(c=>c.Products).ToListAsync();
+            if(categories==null) return NotFound();
+            PaginationVm<Category> paginationVm = new PaginationVm<Category>
+            {
+                Items = categories,
+                TotalPage = TotalPage,
+                PageCount = page
+            };
+            return View(paginationVm);
         }
         //========================================== Create =======================================//
 

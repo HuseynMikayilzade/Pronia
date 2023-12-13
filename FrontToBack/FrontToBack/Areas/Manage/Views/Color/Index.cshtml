@@ -1,16 +1,35 @@
-﻿@model List<Color>
+﻿@model PaginationVm<Color>
 
 @{
-    int count = 0;
+    int count = (Model.PageCount-1)*4;
 }
 <div class="row">
     <div class="col-lg-12 grid-margin stretch-card">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title">
-                    <a asp-action="create" type="button" class="btn btn-success btn-fw">Create color</a>
-                </h4>
+                <div class="d-flex justify-content-around">
+                    <h4 class="card-title">
+                        <a asp-action="create" type="button" class="btn btn-success btn-fw">Create color</a>
+                    </h4>
+                    
+                    <nav aria-label="Page navigation example ">
+                        <ul class="pagination justify-content-center">
+                            <li class="page-item ">
+                                <a class="page-link @(Model.PageCount<=1 ? " disabled" : "active")" asp-route-page="@(Model.PageCount-1)" asp-action="index" asp-controller="color">Previous</a>
+                            </li>
+                            @for (int i = 0; i < Model.TotalPage; i++)
+                            {
+                                <li class="page-item @(Model.PageCount-1==i ? "btn-success disabled" : "")">
+                                    <a class="page-link" asp-route-page="@(i+1)" asp-action="index" asp-controller="color">@(i + 1)</a>
+                                </li>
 
+                            }
+                            <li class="page-item">
+                                <a class="page-link @(Model.TotalPage==Model.PageCount ? "disabled" : "active")" asp-route-page="@(Model.PageCount+1)" asp-action="index" asp-controller="color">Next</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
                 <div class="table-responsive pt-3">
                     <table class="table table-dark text-center">
                         <thead>
@@ -30,7 +49,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                          @foreach (var item in Model)
+                          @foreach (var item in Model.Items)
                             {
                                 count++;
                             <tr>

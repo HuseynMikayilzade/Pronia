@@ -20,7 +20,7 @@ namespace FrontToBack.Controllers
         }
         public async Task<IActionResult> Index()
         {
-
+            throw new Exception("xeta mesaji");
             //======================= Slides  ========================//
             List<Slide> slides = _context.Slides.OrderBy(s => s.Order).ToList();
 

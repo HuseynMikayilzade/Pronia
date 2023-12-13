@@ -21,12 +21,30 @@ namespace FrontToBack.Areas.Manage.Controllers
         }
         [Authorize(Roles = "Admin,Moderator,Designer")]
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int page=1)
         {
-            List<Color> colors = await _context.Colors.Include(c=>c.ProductColors).ToListAsync();
-            
-            
-            return View(colors);
+            double count = await _context.Colors.CountAsync();
+            double TotalPage = Math.Ceiling(count / 4);
+            if (page <= 0)
+            {
+                return BadRequest();
+            }
+            else if (page > TotalPage)
+            {
+                return BadRequest();
+            }
+
+            List<Color> colors = await _context.Colors.Skip((page-1)*4).Take(4).Include(c=>c.ProductColors).ToListAsync();
+            if (colors==null) return NotFound();
+
+            PaginationVm<Color> paginationVm = new PaginationVm<Color>
+            {
+                Items = colors,
+                TotalPage = TotalPage,
+                PageCount = page
+            };
+
+            return View(paginationVm);
         }
 
         //========================================== Create =======================================//

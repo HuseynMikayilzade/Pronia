@@ -1,5 +1,6 @@
 using FrontToBack.DAL;
 using FrontToBack.Interfaces;
+using FrontToBack.Middlewares;
 using FrontToBack.Models;
 using FrontToBack.Services;
 using Microsoft.AspNetCore.Builder;
@@ -28,6 +29,7 @@ namespace FrontToBack
                     options.Password.RequiredLength = 8;
                     options.Password.RequireNonAlphanumeric = false;
                     options.User.RequireUniqueEmail = true;
+                    //options.SignIn.RequireConfirmedEmail = true;
                     options.Lockout.AllowedForNewUsers = true;
                     options.Lockout.MaxFailedAccessAttempts = 5;
                     options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(3);
@@ -37,7 +39,7 @@ namespace FrontToBack
             app.UseRouting();
             app.UseAuthorization();
             app.UseStaticFiles();
-
+            app.UseMiddleware<GlobalExceptionHandler>();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(

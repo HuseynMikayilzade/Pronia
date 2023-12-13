@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 namespace FrontToBack.Areas.Manage.Controllers
 {
     [Area("Manage")]
-    [Authorize(Roles = "Admin,Moderator,Designer")]
+   [Authorize(Roles = "Admin,Moderator,Designer")]
     [AutoValidateAntiforgeryToken]
 
     public class ProductController : Controller
@@ -22,15 +22,33 @@ namespace FrontToBack.Areas.Manage.Controllers
             _context = context;
             _env = env;
         }
-        [Authorize(Roles = "Admin,Moderator,Designer")]
-        public async Task<IActionResult> Index()
+        [Authorize(Roles = "Admin,moderator,designer")]
+        public async Task<IActionResult> Index(int page=1)
         {
-            List<Product> products = await  _context.Products
+            double count =await _context.Products.CountAsync();
+            double TotalPage = Math.Ceiling(count / 4);
+            if (page <= 0)
+            {
+                return BadRequest();
+            }
+            else if (page > TotalPage)
+            {
+                return BadRequest();
+            }
+
+            List<Product> products = await  _context.Products.Skip((page-1)*4).Take(4)
                 .Include(p=>p.Category)
                 .Include(p=>p.ProductImages.Where(pi=>pi.IsPrimary==true))
                 .ToListAsync();
-            
-            return View(products);
+
+            if (products == null) return NotFound();
+            PaginationVm<Product> paginationVm = new PaginationVm<Product>
+            {
+                Items= products,
+                TotalPage= TotalPage,
+                PageCount = page
+            };
+            return View(paginationVm);
         }
 
 

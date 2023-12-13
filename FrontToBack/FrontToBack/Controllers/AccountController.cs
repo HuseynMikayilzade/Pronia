@@ -77,8 +77,23 @@ namespace FrontToBack.Controllers
             }
 
             await _userManager.AddToRoleAsync(appUser, Roles.Member.ToString());
-            await _signInManager.SignInAsync(appUser, isPersistent: false);
+
+            string token =await _userManager.GenerateEmailConfirmationTokenAsync(appUser);
+            string confirmLink = Url.Action(nameof(ConfirmEmail), "Account", new { token, appUser.Email },Request.Scheme);
             return RedirectToAction(nameof(Index),"Home");
+        }
+        public async Task<IActionResult> ConfirmEmail(string email,string token)
+        {
+            AppUser appUser = await _userManager.FindByEmailAsync(email);
+            if (appUser == null) return NotFound();
+            var result = await _userManager.ConfirmEmailAsync(appUser, token);
+            if (!result.Succeeded)
+            {
+                return NotFound();
+            }
+            await _signInManager.SignInAsync(appUser, isPersistent:false);
+
+            return View();
         }
 
         public IActionResult Login()
