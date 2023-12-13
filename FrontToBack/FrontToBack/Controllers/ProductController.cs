@@ -1,5 +1,6 @@
 ﻿using FrontToBack.DAL;
 using FrontToBack.Models;
+using FrontToBack.Utilities.Exceptions;
 using FrontToBack.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -16,8 +17,9 @@ namespace FrontToBack.Controllers
         public async Task<IActionResult> Detail (int id)
         {
 
-            if (id <= 0) return BadRequest();
-            
+            if (id <= 0) throw new BadRequestException(" Bad Request :(");
+               
+   
             //======================= Product ========================//
             Product product= _context.Products
                 .Include(p=>p.Category)
@@ -29,7 +31,7 @@ namespace FrontToBack.Controllers
 
             //======================= Related Products  ========================//
 
-            if (product == null) return NotFound();
+            if (product == null) throw new NotFoundException("Product Not Found :(");
 
             List<Product> relatedproducts = _context.Products
                 .Include(p=>p.Category)
@@ -37,6 +39,8 @@ namespace FrontToBack.Controllers
                 .Include(p=>p.ProductTags)
                 .ThenInclude(pt=>pt.Tag)
                 .Where(p=>p.CategoryId == product.CategoryId && p.Id!=id).ToList();
+
+            if (relatedproducts == null) throw new NotFoundException("Product Not Found :(");
 
 
             //======================= Services  ========================//
@@ -47,8 +51,7 @@ namespace FrontToBack.Controllers
                 Product= product,
                 CustomServices= customService,
                 RelatedProducts=await _context.Products.Where(p=>p.CategoryId==product.CategoryId && p.Id!=id)
-                .Take(8)
-                .Include(p=>p.ProductImages.Where(pi=>pi.IsPrimary!=null)).ToListAsync()
+                .Take(8).Include(p=>p.ProductImages.Where(pi=>pi.IsPrimary!=null)).ToListAsync()
             };
 
             

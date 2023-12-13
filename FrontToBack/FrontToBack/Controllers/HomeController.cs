@@ -1,6 +1,7 @@
 ﻿using FrontToBack.DAL;
 using FrontToBack.Models;
 using FrontToBack.Services;
+using FrontToBack.Utilities.Exceptions;
 using FrontToBack.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -20,10 +21,11 @@ namespace FrontToBack.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            throw new Exception("xeta mesaji");
+            
             //======================= Slides  ========================//
             List<Slide> slides = _context.Slides.OrderBy(s => s.Order).ToList();
-
+            //if (slides == null) throw new  NotFoundException("slide tapilmadi");
+          
             //======================= Services  ========================//
             List<CustomService> services = _context.CustomServices.ToList();
 
@@ -51,6 +53,10 @@ namespace FrontToBack.Controllers
         public IActionResult About()
         {
             return View();
+        }
+        public IActionResult ErrorPage(string error)
+        {
+            return View(model:error);
         }
     }
 }

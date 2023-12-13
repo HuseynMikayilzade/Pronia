@@ -14,10 +14,11 @@
             {
                 await _next.Invoke(Context);
             }
-            catch (Exception)
+            catch (Exception e)
             {
-
-                throw;
+                //string errorurl = Path.Combine("home",$"errorpage?error={e.Message}");
+                string errorurl = $"/home/errorpage?error={e.Message}";
+                Context.Response.Redirect(errorurl);
             }
            
         }
